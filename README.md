@@ -25,12 +25,12 @@ Spec: `docs/MEI_TREE_GALLERY_PLAN.md` in the Rakusalab repo (v1.2) and `MEI_SPEC
 
 ## Run
 
-Nothing to build. Serve the folder statically (`python3 -m http.server 8080` inside `mei/`) and open
+Nothing to build. Serve the repo root statically (`python3 -m http.server 8080`) and open
 `http://localhost:8080/`. Tests: `pytest -q` (data + page locks) and `node --check assets/mei.js`.
 
 ## Deploy (owner, one time)
 
-1. Vercel → New Project → import `mei` → framework **Other**, root `.`, region Seoul (icn1). The
+1. Vercel → New Project → import `meiki` → project name `mei` → framework **Other**, root `.`, region Seoul (icn1). The
    `vercel.json` here carries the rewrites and the Python function.
 2. Cloudflare DNS → CNAME `mei` → the project's `*.vercel-dns-*.com` target, DNS only (the `mt.` recipe).
 3. Environment variables (when the API moves to Supabase): `SUPABASE_URL`, `SUPABASE_ANON_KEY`,

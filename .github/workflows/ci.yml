@@ -21,4 +21,4 @@ jobs:
       - name: Data + page locks
         run: pytest -q
       - name: JS syntax
-        run: node --check assets/mei.js && node --check assets/qr.js
+        run: for f in assets/*.js; do node --check "$f"; done

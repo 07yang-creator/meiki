@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>审 · 工作台 · 名木 Mei</title>
+<meta name="robots" content="noindex">
+<meta name="mei-base" content="../">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&amp;family=Shippori+Mincho+B1:wght@500;700&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/mei.css">
+<style>
+  .filters { display: flex; flex-wrap: wrap; gap: 6px; }
+  .filters .chip { height: 30px; font-size: 12px; padding: 0 10px; }
+  .sec { display: flex; flex-direction: column; gap: 10px; padding: 16px 0 6px; border-top: 1px solid var(--hairline-soft); }
+  .sec h3 { font-family: var(--f-dzh); font-size: 16px; font-weight: 400; display: flex; justify-content: space-between; align-items: baseline; }
+  .sec h3 span { font-size: 11px; color: var(--muted); font-family: var(--f-sans); }
+  .kv { display: grid; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr)); gap: 6px 14px; font-size: 13px; }
+  .kv b { font-weight: 400; color: var(--muted); font-size: 11px; display: block; }
+  .ro { font-family: var(--f-serif-ja); font-size: 14px; line-height: 1.8; background: var(--surface); border-radius: 10px; padding: 10px 12px; white-space: pre-wrap; }
+  .btn.small { height: 36px; padding: 0 14px; font-size: 13px; letter-spacing: 0.06em; }
+  .btn.danger { background: transparent; border: 1px solid var(--autumn); color: var(--autumn); }
+  .btn[disabled] { opacity: 0.45; cursor: not-allowed; }
+  .pending { border: 1px solid var(--hairline); border-radius: 12px; padding: 12px; display: flex; flex-direction: column; gap: 8px; background: #fff; }
+  .pending .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .pending .inp { height: 38px; font-size: 14px; }
+  @media (min-width: 960px) { .two { display: grid; grid-template-columns: 340px minmax(0, 1fr); gap: 40px; align-items: start; } .two aside { position: sticky; top: 12px; max-height: calc(100vh - 24px); overflow: auto; padding-right: 4px; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hdr">
+    <span style="display: flex; align-items: center; gap: 10px"><span class="seal">名木</span><span class="dzh" style="font-size: 14px; color: var(--muted)">审 · 工作台</span></span>
+    <nav><a href="../?edit=1" title="在展厅中替换示例照片">展厅编辑</a><a href="../in/">入</a><span id="who" class="muted" style="font-size: 12px"></span><a href="#" id="logout" style="color: var(--muted)">退出</a></nav>
+  </header>
+
+  <main id="gate" style="padding-top: 24px"></main>
+
+  <main id="app" class="two" hidden>
+    <aside class="stack" style="gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h1 class="dzh" style="font-size: 20px; font-weight: 400">审查队列</h1>
+        <span id="totals" class="muted num" style="font-size: 11px"></span>
+      </div>
+      <div id="filters" class="filters"></div>
+      <div id="queue" class="list stack"></div>
+      <div class="sec" style="margin-top: 10px">
+        <h3>新树种待审 <span id="pend-count"></span></h3>
+        <div id="pending" class="stack" style="gap: 10px"></div>
+      </div>
+    </aside>
+
+    <section id="detail" class="stack" style="gap: 6px">
+      <p class="muted" style="font-size: 14px; padding-top: 10px">从左侧选择一株树。供应者提交后出现在「审查中」。</p>
+    </section>
+  </main>
+
+  <footer class="ftr" style="margin-top: 40px"><div class="row"><span class="seal m">名木</span><nav><a href="../">展</a><a href="../legal/">法律声明</a></nav></div></footer>
+</div>
+<script src="../assets/auth.js"></script>
+<script src="../assets/desk.js"></script>
+</body>
+</html>

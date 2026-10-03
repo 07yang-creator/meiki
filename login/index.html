@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ログイン · 名木 Mei</title>
+<meta name="robots" content="noindex">
+<meta name="mei-base" content="../">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&amp;family=Shippori+Mincho+B1:wght@500;700&amp;family=Ma+Shan+Zheng&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/mei.css">
+</head>
+<body>
+<div class="wrap" style="max-width: 520px">
+  <header class="hdr">
+    <a class="brand" href="../" aria-label="名木 Mei 首页"><span class="seal">名木</span><span class="brush">名木</span></a>
+    <nav><a href="../">展</a><a href="../in/">入</a><a href="../desk/">审</a></nav>
+  </header>
+  <main id="gate" style="padding-top: 28px"></main>
+  <p id="after" class="muted" style="font-size: 13px; padding-top: 16px"></p>
+  <footer class="ftr" style="margin-top: 40px"><div class="row"><span class="seal m">名木</span><nav><a href="../legal/">法律声明</a></nav></div></footer>
+</div>
+<script src="../assets/auth.js"></script>
+<script>
+(function () {
+  var rt = MeiAuth.sameOriginPath(new URLSearchParams(location.search).get('returnTo'));
+  var gate = document.getElementById('gate');
+  MeiAuth.requireLogin(gate, { title: 'ログイン', hint: '供給者・スタッフ・管理者のみ。招待メールで設定したパスワードでお入りください。' }).then(function () {
+    return MeiAuth.api('me');
+  }).then(function (r) {
+    if (r.status === 403) { gate.innerHTML = '<p class="muted">このアカウントはメンバーではありません。管理者にご連絡ください。</p>'; return; }
+    if (r.status === 503) { gate.innerHTML = '<p class="muted">データベースが未接続です（環境変数）。</p>'; return; }
+    if (r.status >= 300) { gate.innerHTML = '<p class="muted">' + (r.data.error || 'エラー') + '</p>'; return; }
+    var role = r.data.member.role;
+    var dest = rt || (role === 'supplier' ? '../in/' : '../desk/');   // supplier → 入 · staff/admin → 审
+    document.getElementById('after').innerHTML = 'ログインしました（' + role + '）。 <a href="' + dest.replace(/"/g, '') + '">続ける →</a>';
+    location.replace(dest);   // the ONE redirect: already-authed on /login → returnTo (same-origin path) or the role's home
+  }).catch(function (e) { gate.innerHTML = '<p class="muted">' + e.message + '</p>'; });
+})();
+</script>
+</body>
+</html>

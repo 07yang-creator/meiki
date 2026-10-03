@@ -3,7 +3,7 @@
   "outputDirectory": ".",
   "regions": ["icn1"],
   "functions": {
-    "api/mei.py": { "maxDuration": 30, "includeFiles": "{api/_*.py,data/*.json}" }
+    "api/mei.py": { "maxDuration": 30, "includeFiles": "{api/_*.py,data/*.json}", "memory": 1024 }
   },
   "rewrites": [
     { "source": "/t/:slug", "destination": "/t/index.html?slug=:slug" },

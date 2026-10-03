@@ -77,6 +77,7 @@
   function fillForm(t) {
     state.tree = t; state.media = [];
     $('f-title').textContent = t ? (t.given_name_ja || '樹木') : '新しい樹木';
+    if (!t) { $('sendback').hidden = true; }
     $('f-no').textContent = t ? t.catalog_no : '整理番号は保存時に付きます';
     renderSpecies();
     $('f-name').value = (t && t.given_name_ja) || ''; $('f-cultivar').value = (t && t.cultivar_ja) || '';
@@ -115,7 +116,14 @@
     return MeiAuth.api('tree_get', { query: { id: id } }).then(function (r) {
       if (r.status >= 300) { msg(r.data.error || '読み込めません', true); return; }
       fillForm(r.data.tree); state.media = r.data.media || []; renderShots(); msg('');
+      var sb = $('sendback'); sb.hidden = !r.data.sendback; sb.textContent = r.data.sendback ? 'スタッフより：' + r.data.sendback : '';
       window.scrollTo({ top: $('form').offsetTop - 12, behavior: 'smooth' });
+      // thumbnails of what is already uploaded (signed read URLs, 1 h)
+      MeiAuth.api('media_urls', { query: { id: id } }).then(function (u) {
+        if (u.status >= 300 || !state.tree || state.tree.id !== id) return;
+        (u.data.media || []).forEach(function (m) { var mine = state.media.filter(function (x) { return x.id === m.id; })[0]; if (mine && m.url && m.kind === 'photo') mine._preview = m.url; });
+        renderShots();
+      });
     });
   }
   $('new').addEventListener('click', function () { fillForm(null); msg(''); });
@@ -211,6 +219,7 @@
     if (r.status === 503) { $('gate').innerHTML = '<p class="muted">データベースが未接続です（環境変数）。</p>'; return; }
     if (r.status >= 300) { $('gate').innerHTML = '<p class="muted">' + esc(r.data.error || 'エラー') + '</p>'; return; }
     state.me = r.data; $('who').textContent = (r.data.member.name || r.data.user.email) + ' · ' + r.data.member.role;
+    $('to-desk').hidden = r.data.member.role === 'supplier';
     $('gate').hidden = true; $('app').hidden = false;
     return MeiAuth.api('species_all').then(function (s) { state.species = (s.data && s.data.species) || []; renderSpecies(); return loadTrees(); }).then(function () { fillForm(null); });
   }).catch(function (e) { $('gate').innerHTML = '<p class="muted">' + esc(e.message) + '</p>'; });

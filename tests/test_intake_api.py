@@ -11,8 +11,10 @@ import pytest
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 sys.path.insert(0, os.path.join(ROOT, 'api'))
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 import _db                                    # noqa: E402
 import mei as api                             # noqa: E402
+from fake_supabase import FakeSupabase        # noqa: E402
 
 GARDEN_A, GARDEN_B = str(uuid.uuid4()), str(uuid.uuid4())
 SUP_A = {'id': str(uuid.uuid4()), 'email': 'a@garden.jp'}
@@ -20,64 +22,6 @@ SUP_B = {'id': str(uuid.uuid4()), 'email': 'b@garden.jp'}
 STAFF = {'id': str(uuid.uuid4()), 'email': 'staff@mei'}
 NOBODY = {'id': str(uuid.uuid4()), 'email': 'x@x'}
 TOKENS = {'tok-a': SUP_A, 'tok-b': SUP_B, 'tok-staff': STAFF, 'tok-nobody': NOBODY}
-
-
-class FakeSupabase:
-    """Just enough PostgREST + Storage for the handlers' query shapes."""
-
-    def __init__(self):
-        self.tables = {'members': [], 'species': [], 'trees': [], 'tree_media': [], 'events': []}
-        self.objects = {}        # (bucket, path) → (bytes, mime)
-        self.calls = []
-
-    def _match(self, rows, params):
-        out = rows
-        for k, v in params.items():
-            if k in ('select', 'order', 'limit'):
-                continue
-            op, _, val = v.partition('.')
-            if op == 'eq':
-                out = [r for r in out if str(r.get(k)) == val or (val == 'true' and r.get(k) is True)]
-            elif op == 'like':
-                rx = '^' + re.escape(val).replace('\\*', '.*') + '$'
-                out = [r for r in out if re.match(rx, str(r.get(k) or ''))]
-        if 'order' in params:
-            col, _, d = params['order'].split(',')[0].partition('.')
-            out = sorted(out, key=lambda r: str(r.get(col) or ''), reverse=(d == 'desc'))
-        if 'limit' in params:
-            out = out[:int(params['limit'])]
-        return out
-
-    def request(self, method, url, headers, body=None, timeout=15):
-        self.calls.append((method, url))
-        from urllib.parse import urlparse, parse_qsl, unquote
-        u = urlparse(url)
-        params = dict(parse_qsl(u.query))
-        if '/storage/v1/object/upload/sign/' in u.path:
-            return 200, {}, json.dumps({'url': '/object/upload/sign/signed-' + u.path.rsplit('/', 1)[1], 'token': 'tok'}).encode()
-        if u.path.startswith('/storage/v1/object/') and method == 'HEAD':
-            bucket, path = u.path[len('/storage/v1/object/'):].split('/', 1)
-            obj = self.objects.get((bucket, unquote(path)))
-            return (200, {'Content-Length': str(obj[0]), 'Content-Type': obj[1]}, b'') if obj else (404, {}, b'')
-        table = u.path.rsplit('/', 1)[1]
-        rows = self.tables[table]
-        if method == 'GET':
-            return 200, {}, json.dumps(self._match(rows, params)).encode()
-        data = json.loads(body or b'{}')
-        if method == 'POST':
-            if table == 'trees' and any(r['catalog_no'] == data.get('catalog_no') for r in rows):
-                return 409, {}, b'{"message":"duplicate"}'
-            row = dict(data)
-            row.setdefault('id', str(uuid.uuid4()))
-            row.setdefault('updated_at', '2026-10-03T00:00:00Z')
-            rows.append(row)
-            return 201, {}, json.dumps([row]).encode()
-        if method == 'PATCH':
-            hit = self._match(rows, params)
-            for r in hit:
-                r.update(data)
-            return 200, {}, json.dumps(hit).encode()
-        return 500, {}, b''
 
 
 @pytest.fixture

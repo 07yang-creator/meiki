@@ -24,6 +24,7 @@
    },
    "knowledge": {
     "zh": {
+     "intro": "中国南方与日本庭园共爱的常绿名木，层云之姿与「罗汉」之名使它成为最受华人买家珍视的庭树。",
      "origin": "日本关东以西与中国南部；华南庭园中久负盛名的「罗汉松」。",
      "character": "常绿乔木，叶线状披针形而厚，树皮纵裂；枝可整成层云（段作り）。",
      "culture": "在中国寓意「家有罗汉松，世世不受穷」，是江南与岭南庭院的祥木；在日本是千叶县的县木。",
@@ -31,7 +32,12 @@
      "care": "避寒风；忌积水；春季整枝一次可保层云之形；移植以早春为宜。"
     }
    },
-   "latin_note": null
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E7%BD%97%E6%B1%89%E6%9D%BE",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%8C%E3%83%9E%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Podocarpus_macrophyllus"
+   }
   },
   {
    "id": "pinus-parviflora",
@@ -53,8 +59,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "五针一束的短叶松，枝叶团块分明、姿态清秀，是日本庭木与盆栽中最受推崇的松。",
+     "origin": "日本本州、四国、九州的山地；长期培育出短叶、蓝绿等多个园艺系统。",
+     "character": "常绿乔木，针叶五针一束，短而带蓝绿；枝条层次分明，老干皮裂如鳞。",
+     "culture": "日本称「五葉松」，为松柏类盆栽之冠；寓意长寿与坚贞。",
+     "growth": "生长缓慢；喜阳光与排水良好的土壤，耐寒。",
+     "care": "全日照、通风；忌积水与过肥；每年摘芽与古叶整理维持团块。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%97%A5%E6%9C%AC%E4%BA%94%E9%92%88%E6%9D%BE",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B4%E3%83%A8%E3%82%A6%E3%83%9E%E3%83%84",
+    "wiki_en": "https://en.wikipedia.org/wiki/Pinus_parviflora"
+   }
   },
   {
    "id": "pinus-thunbergii",
@@ -78,6 +98,7 @@
    },
    "knowledge": {
     "zh": {
+     "intro": "树皮黑灰、针叶刚劲，日本海岸与庭园的「松」之代表，象征长寿与不屈。",
      "origin": "日本本州以南与朝鲜半岛南部的海岸；耐盐风，是日本海滨松林的主角。",
      "character": "常绿乔木，树皮黑灰而龟裂，针叶粗硬深绿，枝态苍劲；庭园中多作主木或门冠。",
      "culture": "日本庭园与盆栽的「松」之代表，象征长寿与不屈；松竹梅之首。",
@@ -85,7 +106,12 @@
      "care": "全日照；忌积水；每年摘芽（みどり摘み）与古叶整理维持树形；移植需提前断根。"
     }
    },
-   "latin_note": null
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E9%BB%91%E6%9D%BE",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%AD%E3%83%9E%E3%83%84",
+    "wiki_en": "https://en.wikipedia.org/wiki/Pinus_thunbergii"
+   }
   },
   {
    "id": "pinus-densiflora",
@@ -107,8 +133,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "树皮赤红、针叶柔软，比黑松更显温雅的「女松」，日本里山与茶庭的常客。",
+     "origin": "日本全境、朝鲜半岛与中国东北的山地。",
+     "character": "常绿乔木，上部树皮橙红而薄片剥落，针叶细软，树冠疏朗。",
+     "culture": "日本称赤松为「女松」、黑松为「男松」；松茸生于赤松林下。",
+     "growth": "生长中速，寿命长；喜阳光，耐瘠薄，忌积水。",
+     "care": "全日照、通风；摘芽与疏枝保持疏朗；注意松材线虫防治。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E8%B5%A4%E6%9D%BE",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A2%E3%82%AB%E3%83%9E%E3%83%84",
+    "wiki_en": "https://en.wikipedia.org/wiki/Pinus_densiflora"
+   }
   },
   {
    "id": "acer-palmatum",
@@ -130,8 +170,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Acer palmatum (incl. A. amoenum, A. shirasawanum)"
+   "knowledge": {
+    "zh": {
+     "intro": "掌状细裂的叶与轻盈的枝态，秋日自冠顶渐红，日本庭园中最受喜爱的观叶主木。",
+     "origin": "日本、朝鲜半岛及中国东部的山地林缘；日本庭园中最常见的观叶主木之一。",
+     "character": "落叶小乔木，掌状五至七裂叶，枝条细而密，树冠横展，姿态轻盈。",
+     "culture": "日本自平安时代便有「紅葉狩り」赏枫之俗，和歌中的「もみじ」即指此树；在中国，秋叶自古为文人所咏。",
+     "growth": "生长中速，寿命可逾百年；喜半阴与湿润空气，忌强风与西晒；耐寒。",
+     "care": "排水良好的微酸性土；夏季遮阴防叶焦；落叶后整枝；移植宜在冬季休眠期，定植后第一年不施肥。"
+    }
+   },
+   "latin_note": "Acer palmatum (incl. A. amoenum, A. shirasawanum)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E9%B8%A1%E7%88%AA%E6%A7%AD",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%AD%E3%83%8F%E3%83%A2%E3%83%9F%E3%82%B8",
+    "wiki_en": "https://en.wikipedia.org/wiki/Acer_palmatum"
+   }
   },
   {
    "id": "acer",
@@ -153,8 +207,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Acer spp. (A. palmatum, A. amoenum, A. buergerianum)"
+   "knowledge": {
+    "zh": {
+     "intro": "日本庭园所称的「楓」是槭属各种的总称，春芽、夏荫、秋色各有其时。",
+     "origin": "日本与东亚温带山地；庭园常见的有鸡爪槭、三角枫、羽扇槭等。",
+     "character": "落叶乔木或小乔木，对生掌状叶，秋季变色；树形依种类而异。",
+     "culture": "赏枫是日本秋季的节令之俗；槭属在中国亦为秋色之树。",
+     "growth": "多数生长中速，喜湿润半阴，耐寒。",
+     "care": "避西晒与干风；落叶后修剪；冬季移植。"
+    }
+   },
+   "latin_note": "Acer spp. (A. palmatum, A. amoenum, A. buergerianum)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A7%AD%E5%B1%9E",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%82%A8%E3%83%87",
+    "wiki_en": "https://en.wikipedia.org/wiki/Acer"
+   }
   },
   {
    "id": "juniperus-chinensis-sargentii",
@@ -178,6 +246,7 @@
    },
    "knowledge": {
     "zh": {
+     "intro": "匍匐生长的高山柏，干身的舍利与翠绿的水线并存，是日本盆栽的名种。",
      "origin": "日本高山与朝鲜半岛、库页岛的岩地；盆栽界所称「真柏」。",
      "character": "匍匐或半直立的常绿灌木，鳞叶细密，干身易成舍利（枯白木质）与神枝。",
      "culture": "日本盆栽的名种，糸魚川真柏尤为珍贵；以舍利与水线表现「生与死」的对照。",
@@ -185,7 +254,12 @@
      "care": "全日照与通风；忌长期潮湿；舍利部位需定期防腐处理。"
     }
    },
-   "latin_note": null
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E7%9C%9F%E6%9F%8F",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%9F%E3%83%A4%E3%83%9E%E3%83%93%E3%83%A3%E3%82%AF%E3%82%B7%E3%83%B3",
+    "wiki_en": "https://en.wikipedia.org/wiki/Juniperus_chinensis_var._sargentii"
+   }
   },
   {
    "id": "prunus-mume",
@@ -209,6 +283,7 @@
    },
    "knowledge": {
     "zh": {
+     "intro": "早春先叶开花，香气清冽，中日两国共同珍爱的岁寒之木。",
      "origin": "中国长江流域原产，奈良时代传入日本；今为两国共爱的早春花木。",
      "character": "落叶小乔木，早春先叶开花，香气清冽；老干苍劲，花枝舒展。",
      "culture": "中国「岁寒三友」与「四君子」之一，象征高洁；日本自万叶时代咏梅，太宰府天满宫的「飞梅」为名木。",
@@ -216,7 +291,12 @@
      "care": "花后修剪；忌湿；大树移植以落叶后为宜，花芽在夏季形成，秋季勿重剪。"
     }
    },
-   "latin_note": null
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A2%85",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%83%A1",
+    "wiki_en": "https://en.wikipedia.org/wiki/Prunus_mume"
+   }
   },
   {
    "id": "prunus-mume-pendula",
@@ -238,8 +318,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Prunus mume 'Pendula' (weeping forms)"
+   "knowledge": {
+    "zh": {
+     "intro": "枝条下垂如帘的梅，花开时满树垂红，是庭园中的早春主景。",
+     "origin": "梅的垂枝栽培品种群，日本江户时代以来广泛培育。",
+     "character": "落叶小乔木，枝条细长下垂，花色自白至深红，多为重瓣。",
+     "culture": "日本称「枝垂れ梅」，寺社与名园的早春名物。",
+     "growth": "与梅同，生长中速，寿命长；喜阳光。",
+     "care": "花后疏剪保持垂姿；忌秋季重剪；冬季移植。"
+    }
+   },
+   "latin_note": "Prunus mume 'Pendula' (weeping forms)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E5%9E%82%E6%9E%9D%E6%A2%85",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A6%E3%83%A1",
+    "wiki_en": "https://en.wikipedia.org/wiki/Prunus_mume_Pendula"
+   }
   },
   {
    "id": "cerasus",
@@ -261,8 +355,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Cerasus spp. (C. × yedoensis 'Somei-yoshino', C. jamasakura; = Prunus subg. Cerasus)"
+   "knowledge": {
+    "zh": {
+     "intro": "日本的象征之花，一期一会；庭园中以山樱、染井吉野、八重樱为常。",
+     "origin": "日本列岛与东亚；栽培品种数百。",
+     "character": "落叶乔木，春季先叶或与叶同开，花期短暂而盛大。",
+     "culture": "花见之俗自平安时代；在中国，樱亦为春景之树。",
+     "growth": "生长快，寿命依种类差异大；喜阳光与排水。",
+     "care": "不喜重剪（伤口难愈）；落叶后移植；需充分断根。"
+    }
+   },
+   "latin_note": "Cerasus spp. (C. × yedoensis 'Somei-yoshino', C. jamasakura; = Prunus subg. Cerasus)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A8%B1%E8%8A%B1",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%AF%E3%83%A9",
+    "wiki_en": "https://en.wikipedia.org/wiki/Cerasus"
+   }
   },
   {
    "id": "cerasus-itosakura",
@@ -284,8 +392,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Cerasus itosakura (syn. Prunus pendula, P. itosakura)"
+   "knowledge": {
+    "zh": {
+     "intro": "枝条垂地的长寿之樱，日本千年名木多出于此种。",
+     "origin": "日本本州的山地；栽培自古，三春滝桜等千年名木即此种。",
+     "character": "落叶乔木，枝条细长下垂如帷，早春满枝淡红。",
+     "culture": "日本「枝垂れ桜」为名木之最，寺院与古城的象征；花期即一期一会。",
+     "growth": "寿命极长，可逾千年；喜阳光、排水良好的深厚土壤。",
+     "care": "忌修剪粗枝（伤口难愈）；移植以落叶后休眠期为宜，需充分断根。"
+    }
+   },
+   "latin_note": "Cerasus itosakura (syn. Prunus pendula, P. itosakura)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E5%9E%82%E6%9E%9D%E6%A8%B1",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%89%E3%83%92%E3%82%AC%E3%83%B3",
+    "wiki_en": "https://en.wikipedia.org/wiki/Cerasus_itosakura"
+   }
   },
   {
    "id": "camellia-japonica",
@@ -309,6 +431,7 @@
    },
    "knowledge": {
     "zh": {
+     "intro": "冬末春初的常绿花木，花形端整、叶厚而亮，是茶道与庭园的静花。",
      "origin": "日本、朝鲜半岛南部与中国东部沿海的常绿林。",
      "character": "常绿小乔木，叶厚而亮，冬末至春开花，花形端整。",
      "culture": "日本茶道的「侘」之花，一枝一花插于茶室；中国称山茶，为十大名花之一。",
@@ -316,7 +439,12 @@
      "care": "排水良好的酸性土；忌西晒与干风；花后轻剪；移植以早春或秋季为宜。"
     }
    },
-   "latin_note": null
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E5%B1%B1%E8%8C%B6",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%A4%E3%83%96%E3%83%84%E3%83%90%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Camellia_japonica"
+   }
   },
   {
    "id": "camellia-sasanqua",
@@ -338,8 +466,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "秋冬开花、花瓣零落如雪的山茶近亲，日本冬庭的常绿花篱。",
+     "origin": "日本四国、九州与冲绳的山地。",
+     "character": "常绿小乔木，叶较山茶小而薄，秋末至冬开花，花瓣分散凋落。",
+     "culture": "日文「山茶花」即此种（中文「山茶花」指另一种），童谣与冬日篱垣的象征。",
+     "growth": "生长中速，耐修剪，耐寒性中等。",
+     "care": "半阴至全日照；花后修剪；忌干风。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E8%8C%B6%E6%A2%85",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%82%B6%E3%83%B3%E3%82%AB",
+    "wiki_en": "https://en.wikipedia.org/wiki/Camellia_sasanqua"
+   }
   },
   {
    "id": "rhododendron",
@@ -361,8 +503,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Rhododendron spp. (R. × pulchrum 'Oomurasaki', R. × obtusum Kurume group)"
+   "knowledge": {
+    "zh": {
+     "intro": "春末满丛花色，日本庭园与公园的基础花木。",
+     "origin": "日本与东亚；栽培群系众多（大紫、久留米等）。",
+     "character": "常绿或半常绿灌木，春季花繁密，耐修剪成型。",
+     "culture": "日本「ツツジ」自万叶时代入诗；中国称杜鹃，亦为名花。",
+     "growth": "生长缓慢至中速，喜酸性土与半阴。",
+     "care": "花后立即修剪；忌碱性土与干燥；浅根，忌深植。"
+    }
+   },
+   "latin_note": "Rhododendron spp. (R. × pulchrum 'Oomurasaki', R. × obtusum Kurume group)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%9D%9C%E9%B9%83%E8%8A%B1%E5%B1%9E",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%84%E3%83%84%E3%82%B8",
+    "wiki_en": "https://en.wikipedia.org/wiki/Rhododendron"
+   }
   },
   {
    "id": "rhododendron-indicum",
@@ -384,8 +540,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "五月末至六月开花的小叶杜鹃，日本园艺与盆栽的名品群。",
+     "origin": "日本本州中部以西的河岸岩地。",
+     "character": "常绿小灌木，叶小而密，花期晚于一般杜鹃，花色花型变化极多。",
+     "culture": "日文「皐月」取自旧历五月；皋月杜鹃盆栽在日本自成一门。",
+     "growth": "生长缓慢，极耐修剪与造型。",
+     "care": "酸性土、保水透气；花后修剪；忌烈日直晒根部。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E7%9A%8B%E6%9C%88%E6%9D%9C%E9%B9%83",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%84%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Rhododendron_indicum"
+   }
   },
   {
    "id": "zelkova-serrata",
@@ -409,6 +579,7 @@
    },
    "knowledge": {
     "zh": {
+     "intro": "树冠如扇的落叶大乔木，关东平原的乡土树，秋叶黄红。",
      "origin": "日本、朝鲜半岛与中国东部；关东平原的代表性乡土树。",
      "character": "落叶大乔木，树冠呈优美的伞形（箒立ち），秋叶黄红。",
      "culture": "日本街道与神社境内的大树多为榉；木材为和太鼓与家具的上材。",
@@ -416,7 +587,12 @@
      "care": "需开阔空间与深厚土壤；少修剪以保天然树形；大树移植需两年以上断根。"
     }
    },
-   "latin_note": null
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A6%89%E6%A0%91",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B1%E3%83%A4%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Zelkova_serrata"
+   }
   },
   {
    "id": "osmanthus-fragrans-aurantiacus",
@@ -438,8 +614,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "十月满树橙花、香闻一庭，中日两国秋天的香木。",
+     "origin": "中国原产，江户时代传入日本的雄株系。",
+     "character": "常绿小乔木，叶革质，秋季开橙黄色小花，香气浓烈。",
+     "culture": "中国的桂花与中秋、月宫相连；日本称金木犀，为秋香之代表。",
+     "growth": "生长中速，耐修剪；喜阳光，耐寒性中等。",
+     "care": "花后修剪；避寒风；忌积水。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E4%B8%B9%E6%A1%82",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%AD%E3%83%B3%E3%83%A2%E3%82%AF%E3%82%BB%E3%82%A4",
+    "wiki_en": "https://en.wikipedia.org/wiki/Osmanthus_fragrans_var._aurantiacus"
+   }
   },
   {
    "id": "quercus-myrsinifolia",
@@ -461,8 +651,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Quercus myrsinifolia (also Q. glauca, Q. phillyraeoides)"
+   "knowledge": {
+    "zh": {
+     "intro": "叶细长而亮的常绿栎，关东庭园的屏障树与防风树。",
+     "origin": "日本关东以西与中国南部。",
+     "character": "常绿乔木，叶披针形、背面灰白；树冠密，耐修剪。",
+     "culture": "日本称「白樫」，自古用于屋敷林与生垣。",
+     "growth": "生长快，寿命长；耐阴耐修剪。",
+     "care": "强剪亦可恢复；移植以早春为宜；注意栎类枯萎病。"
+    }
+   },
+   "latin_note": "Quercus myrsinifolia (also Q. glauca, Q. phillyraeoides)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E5%B0%8F%E5%8F%B6%E9%9D%92%E5%86%88",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B7%E3%83%A9%E3%82%AB%E3%82%B7",
+    "wiki_en": "https://en.wikipedia.org/wiki/Quercus_myrsinifolia"
+   }
   },
   {
    "id": "cinnamomum-camphora",
@@ -484,8 +688,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "一树成荫的香木，日本神社境内的巨树多为樟。",
+     "origin": "日本关东以西、中国南部与台湾。",
+     "character": "常绿大乔木，树冠广展，叶与木材有樟脑香气。",
+     "culture": "日本各地的巨树名木多为樟；中国江南的「樟」亦为乡土大树。",
+     "growth": "生长快，寿命长，可成巨木。",
+     "care": "需开阔空间；不耐寒；大树移植需强剪与断根。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A8%9F%E6%A0%91",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%82%B9%E3%83%8E%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Cinnamomum_camphora"
+   }
   },
   {
    "id": "chamaecyparis-obtusa",
@@ -507,8 +725,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "日本神社建筑的木材之源，庭园中以矮生与扇叶品种见长。",
+     "origin": "日本本州福岛以南与台湾。",
+     "character": "常绿乔木，鳞叶扇形排列，树皮红褐纵裂。",
+     "culture": "伊势神宫等以桧木营造；日本五木之一。",
+     "growth": "生长中速，寿命极长。",
+     "care": "全日照至半阴；忌干燥；少修剪。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%97%A5%E6%9C%AC%E6%89%81%E6%9F%8F",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%92%E3%83%8E%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Chamaecyparis_obtusa"
+   }
   },
   {
    "id": "cryptomeria-japonica",
@@ -530,8 +762,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "日本的国木，参道两侧的巨杉即此种。",
+     "origin": "日本固有种，本州至屋久岛。",
+     "character": "常绿大乔木，树形直立圆锥，树皮纵裂成条。",
+     "culture": "屋久杉、日光杉并木皆为日本文化象征。",
+     "growth": "生长快，寿命极长。",
+     "care": "需空间与水分；庭园中多用矮生品种。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%97%A5%E6%9C%AC%E6%9F%B3%E6%9D%89",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B9%E3%82%AE",
+    "wiki_en": "https://en.wikipedia.org/wiki/Cryptomeria_japonica"
+   }
   },
   {
    "id": "sciadopitys-verticillata",
@@ -553,8 +799,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "叶如伞骨轮生的日本固有针叶树，高野山的灵木。",
+     "origin": "日本固有种，本州至九州的山地。",
+     "character": "常绿乔木，长针叶轮生如伞；树形端整。",
+     "culture": "日本称「高野槇」，为高野山的供花与皇室御印之木。",
+     "growth": "生长极缓慢，寿命长。",
+     "care": "半阴、湿润、排水良好；忌强风。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E9%87%91%E6%9D%BE",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%82%A6%E3%83%A4%E3%83%9E%E3%82%AD",
+    "wiki_en": "https://en.wikipedia.org/wiki/Sciadopitys_verticillata"
+   }
   },
   {
    "id": "torreya-nucifera",
@@ -576,8 +836,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "木理细腻的榧，围棋盘的上材，庭园中为端整的常绿大树。",
+     "origin": "日本本州宫城以南与朝鲜半岛南部。",
+     "character": "常绿乔木，叶线形坚硬而有光泽；树冠圆整。",
+     "culture": "榧木棋盘为日本围棋之最；中国的香榧为近缘种。",
+     "growth": "生长极缓慢，寿命可达千年。",
+     "care": "半阴、湿润；少修剪。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%97%A5%E6%9C%AC%E6%A6%A7%E6%A0%91",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%AB%E3%83%A4",
+    "wiki_en": "https://en.wikipedia.org/wiki/Torreya_nucifera"
+   }
   },
   {
    "id": "taxus-cuspidata",
@@ -599,8 +873,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "木材与树形皆尊贵的常绿树，矮生的伽罗木是庭园的常客。",
+     "origin": "日本北部与东北亚。",
+     "character": "常绿乔木或灌木（伽罗木），叶线形深绿，秋结红色假种皮。",
+     "culture": "日文「一位」源于古代官位；中国称红豆杉，为国家一级保护植物。",
+     "growth": "生长缓慢，寿命长，耐阴。",
+     "care": "耐修剪；忌积水；注意果实有毒。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E4%B8%9C%E5%8C%97%E7%BA%A2%E8%B1%86%E6%9D%89",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A4%E3%83%81%E3%82%A4",
+    "wiki_en": "https://en.wikipedia.org/wiki/Taxus_cuspidata"
+   }
   },
   {
    "id": "styphnolobium-japonicum",
@@ -622,8 +910,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Styphnolobium japonicum (syn. Sophora japonica)"
+   "knowledge": {
+    "zh": {
+     "intro": "夏日开淡黄花的槐，中国的「国槐」与日本庭园的乡土树。",
+     "origin": "中国原产，古时传入日本。",
+     "character": "落叶乔木，羽状复叶，夏季开淡黄色蝶形花。",
+     "culture": "中国称国槐，为长安之树、科举之木；日本称「槐（えんじゅ）」。",
+     "growth": "生长中速，寿命长，耐旱耐瘠。",
+     "care": "阳光充足；少修剪；移植易活。"
+    }
+   },
+   "latin_note": "Styphnolobium japonicum (syn. Sophora japonica)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A7%90",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%A8%E3%83%B3%E3%82%B8%E3%83%A5",
+    "wiki_en": "https://en.wikipedia.org/wiki/Styphnolobium_japonicum"
+   }
   },
   {
    "id": "lagerstroemia-indica",
@@ -645,8 +947,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "夏季花期百日、干身光滑如骨，是夏庭的主花木。",
+     "origin": "中国南部原产，江户时代前传入日本。",
+     "character": "落叶小乔木，树皮光滑剥落，夏季开花百日不绝。",
+     "culture": "中国称紫薇，唐代即植于宫廷；日本称「百日紅」。",
+     "growth": "生长中速，喜阳光，耐修剪。",
+     "care": "冬季强剪可促花；忌荫蔽；移植易活。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E7%B4%AB%E8%96%87",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B5%E3%83%AB%E3%82%B9%E3%83%99%E3%83%AA",
+    "wiki_en": "https://en.wikipedia.org/wiki/Lagerstroemia_indica"
+   }
   },
   {
    "id": "gardenia-jasminoides",
@@ -668,8 +984,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "六月开白花、香气浓郁的常绿灌木，果可染黄。",
+     "origin": "中国、日本与台湾。",
+     "character": "常绿灌木，叶亮绿，初夏开白色香花。",
+     "culture": "日本称「梔子」因果实不开口；中国栀子花入诗入画。",
+     "growth": "生长缓慢，喜温暖湿润。",
+     "care": "酸性土、半阴；花后修剪；忌干燥。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%A0%80%E5%AD%90",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%AF%E3%83%81%E3%83%8A%E3%82%B7",
+    "wiki_en": "https://en.wikipedia.org/wiki/Gardenia_jasminoides"
+   }
   },
   {
    "id": "osmanthus-heterophyllus",
@@ -691,8 +1021,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "叶缘有刺的常绿小乔木，日本节分与生垣的驱邪之木。",
+     "origin": "日本关东以西与台湾。",
+     "character": "常绿小乔木，叶革质，缘有尖刺，老树叶刺渐退；秋开白色小香花。",
+     "culture": "日本节分以柊叶与沙丁鱼头驱邪；寓意守护。",
+     "growth": "生长缓慢，耐阴耐修剪。",
+     "care": "半阴；忌积水；修剪以保密度。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%9F%8A%E6%A0%91",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%92%E3%82%A4%E3%83%A9%E3%82%AE",
+    "wiki_en": "https://en.wikipedia.org/wiki/Osmanthus_heterophyllus"
+   }
   },
   {
    "id": "ternstroemia-gymnanthera",
@@ -714,8 +1058,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "叶厚干直的常绿树，日本称之为「庭木之王」。",
+     "origin": "日本关东以西、中国南部与东南亚。",
+     "character": "常绿小乔木，叶厚而有光泽，新叶带红；树形端整。",
+     "culture": "与赤松、槇并称日本「三大庭木」；中国称厚皮香。",
+     "growth": "生长缓慢，耐阴。",
+     "care": "半阴至全日照；少修剪；忌干风。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E5%8E%9A%E7%9A%AE%E9%A6%99",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%A2%E3%83%83%E3%82%B3%E3%82%AF",
+    "wiki_en": "https://en.wikipedia.org/wiki/Ternstroemia_gymnanthera"
+   }
   },
   {
    "id": "quercus-serrata",
@@ -737,8 +1095,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Quercus serrata (ミズナラ = Q. crispula, 蒙古栎)"
+   "knowledge": {
+    "zh": {
+     "intro": "里山杂木林的主角，雅致的落叶树，秋叶黄褐。",
+     "origin": "日本、朝鲜半岛与中国。",
+     "character": "落叶乔木，叶缘锯齿，秋叶黄褐而久留枝头。",
+     "culture": "日本里山文化的象征树种，杂木庭园的主木。",
+     "growth": "生长快，寿命长。",
+     "care": "阳光充足；少修剪保自然树形；冬季移植。"
+    }
+   },
+   "latin_note": "Quercus serrata (ミズナラ = Q. crispula, 蒙古栎)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E6%9E%B9%E6%A0%8E",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%B3%E3%83%8A%E3%83%A9",
+    "wiki_en": "https://en.wikipedia.org/wiki/Quercus_serrata"
+   }
   },
   {
    "id": "phyllostachys",
@@ -760,8 +1132,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": "Phyllostachys spp. (P. edulis 毛竹, P. reticulata 桂竹, P. nigra 紫竹)"
+   "knowledge": {
+    "zh": {
+     "intro": "竹影婆娑，中日庭园共同的风雅之物。",
+     "origin": "中国与日本；毛竹、桂竹、紫竹各有所长。",
+     "character": "常绿禾本科，地下茎横走，竹秆直立中空。",
+     "culture": "中国的竹为君子之象；日本的竹林为茶庭之景。",
+     "growth": "生长极快，需控制地下茎。",
+     "care": "设根障防蔓延；每年疏伐老秆；忌干燥。"
+    }
+   },
+   "latin_note": "Phyllostachys spp. (P. edulis 毛竹, P. reticulata 桂竹, P. nigra 紫竹)",
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E5%88%9A%E7%AB%B9%E5%B1%9E",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%83%9E%E3%83%80%E3%82%B1%E5%B1%9E",
+    "wiki_en": "https://en.wikipedia.org/wiki/Phyllostachys"
+   }
   },
   {
    "id": "cycas-revoluta",
@@ -783,8 +1169,22 @@
      "verified_at": "2026-10"
     }
    },
-   "knowledge": null,
-   "latin_note": null
+   "knowledge": {
+    "zh": {
+     "intro": "叶如羽扇的古老植物，日本南方庭园的异域之景。",
+     "origin": "日本九州南部至冲绳。",
+     "character": "常绿裸子植物，粗壮茎干顶生羽状叶，雌雄异株。",
+     "culture": "日本称「蘇鉄」，传说铁钉可使其复苏；中国称铁树，寓意吉祥。",
+     "growth": "生长极缓慢，寿命长。",
+     "care": "全日照、排水良好；耐旱；寒地需防寒。"
+    }
+   },
+   "latin_note": null,
+   "links": {
+    "baike": "https://baike.baidu.com/item/%E8%8B%8F%E9%93%81",
+    "wiki_ja": "https://ja.wikipedia.org/wiki/%E3%82%BD%E3%83%86%E3%83%84",
+    "wiki_en": "https://en.wikipedia.org/wiki/Cycas_revoluta"
+   }
   }
  ]
 }

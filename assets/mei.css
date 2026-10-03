@@ -8,6 +8,7 @@
   --paper: #F6F2EA;
   --surface: #ECE7DC;
   --hairline: #D9D2C4;
+  --hairline-soft: #E9E4D9;      /* lines INSIDE a section: plaque rows, list rows — quieter than the frame hairline */
   --ink: #1C1A17;
   --muted: #5E5952;
   --seal: #B5402F;
@@ -26,7 +27,7 @@
   --f-sans-ja: system-ui, "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", sans-serif;
   --f-serif: "Noto Serif SC", "Noto Serif JP", serif;
   --f-serif-ja: "Noto Serif JP", serif;
-  --f-dzh: "ZCOOL XiaoWei", "Noto Serif SC", serif;
+  --f-dzh: "Ma Shan Zheng", "Noto Serif SC", serif;      /* the brush of the 名木 wordmark carries every Chinese title (owner, 2026-10-03) */
   --f-dja: "Shippori Mincho B1", "Noto Serif JP", serif;
   --f-brush: "Ma Shan Zheng", "Noto Serif SC", serif;
   --f-latin: "Cormorant Garamond", Georgia, serif;
@@ -108,6 +109,7 @@ button { cursor: pointer; }
 .pill.season { color: #fff; background: var(--season); font-family: var(--f-serif); }
 .pill.paper { color: var(--ink); background: rgba(246, 242, 234, 0.88); }
 .pill.ghost { border: 1px solid var(--hairline); background: #fff; color: var(--ink); }
+.pill.tag { background: rgba(255, 255, 255, 0.82); color: var(--muted); border: 1px solid var(--hairline); font-size: 10px; padding: 3px 8px; letter-spacing: 0.1em; }
 
 /* photo frames + placeholders */
 .ph { position: relative; overflow: hidden; background: var(--ph); border-radius: var(--r-2); }
@@ -128,7 +130,8 @@ button { cursor: pointer; }
 
 /* the plaque — the one square thing */
 .plaque { display: flex; flex-direction: column; }
-.plaque .row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--hairline); }
+.plaque .row { display: flex; justify-content: space-between; gap: 12px; padding: 10px 0; border-top: 1px solid var(--hairline-soft); }
+.plaque .row:first-child { border-top: 1px solid var(--hairline); }
 .plaque .row:last-child { border-bottom: 1px solid var(--hairline); }
 .plaque dt { font-size: 13px; color: var(--muted); }
 .plaque dd { font-size: 15px; text-align: right; }
@@ -147,8 +150,10 @@ button { cursor: pointer; }
 .btn.ghost { background: transparent; border: 1px solid var(--ink); color: var(--ink); height: 44px; font-size: 13px; letter-spacing: 0.08em; }
 .input { height: 44px; border: 1px solid var(--hairline); border-radius: var(--r-pill); background: #fff; padding: 0 16px; font-size: 14px; width: 100%; }
 
-/* section ornaments (SVG injected by mei.js) */
+/* section ornaments (SVG injected by mei.js) — lace for breaks, 墨線 for the text, 枝 for the plaque foot */
 .orn { display: block; }
+.orn.lace { width: min(320px, 100%); height: 20px; margin: 0 auto; }
+.orn.lace-edge { width: 100%; height: 18px; }
 .orn.wave { width: 100%; height: 14px; }
 .orn.brushline { width: 220px; height: 12px; }
 .orn.branch { width: 170px; height: 18px; }
@@ -178,8 +183,9 @@ button { cursor: pointer; }
 .sig { display: flex; flex-direction: column; gap: 10px; color: var(--ink); }
 .sig .tier { font-size: 11px; letter-spacing: 0.18em; color: var(--gold-text); }
 .sig h2 { font-family: var(--f-dzh); font-size: 34px; font-weight: 400; letter-spacing: 0.04em; }
-.rowl { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--hairline); color: var(--ink); }
-.rowl:last-child { border-bottom: 1px solid var(--hairline); }
+.rowl { display: grid; grid-template-columns: 56px minmax(0, 1fr) auto; gap: 12px; align-items: center; padding: 10px 0; border-top: 1px solid var(--hairline-soft); color: var(--ink); }
+.rowl:first-child { border-top: 0; }
+.rowl:last-child { border-bottom: 1px solid var(--hairline-soft); }
 .rowl .ph { height: 56px; border-radius: 8px; }
 .rowl.small { grid-template-columns: 44px minmax(0, 1fr) auto; padding: 8px 0; }
 .rowl.small .ph { height: 44px; }
@@ -192,10 +198,15 @@ button { cursor: pointer; }
 .tree-name .vert { font-family: var(--f-dja); font-size: 17px; letter-spacing: 0.22em; color: var(--muted); border-left: 1px solid var(--hairline); padding-left: 10px; justify-self: end; margin-top: 22px; }
 .text h2 { font-family: var(--f-dzh); font-size: 24px; font-weight: 400; line-height: 1.45; letter-spacing: 0.02em; }
 .text p { font-family: var(--f-serif); font-size: 16px; line-height: 1.9; }
+.knowledge { display: flex; flex-direction: column; gap: 12px; }
+.knowledge .intro { font-family: var(--f-serif); font-size: 15px; line-height: 1.9; }
 .knowledge dl { display: flex; flex-direction: column; gap: 10px; }
 .knowledge .k { display: grid; grid-template-columns: 56px minmax(0, 1fr); gap: 10px; }
 .knowledge dt { font-size: 12px; color: var(--muted); padding-top: 3px; }
 .knowledge dd { font-size: 14px; line-height: 1.7; }
+.knowledge .links { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; padding-top: 4px; }
+.knowledge .links a { display: inline-flex; align-items: center; padding: 5px 12px; border: 1px solid var(--hairline); border-radius: var(--r-pill); background: #fff; font-size: 12px; color: var(--ink); }
+.knowledge .links a:hover { border-color: var(--ink); }
 @media (min-width: 900px) {
   .tree-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 32px; }
   .tree-grid .left { grid-column: span 7; }
@@ -209,5 +220,38 @@ button { cursor: pointer; }
 .reveal.in { opacity: 1; transform: none; }
 @media (prefers-reduced-motion: reduce) { .reveal { opacity: 1; transform: none; transition: none; } }
 
-/* sample banner (preview only) */
-.sample-banner { font-size: 11px; color: var(--muted); text-align: center; padding: 6px 16px; border-bottom: 1px solid var(--hairline); }
+/* sample banner (preview only) · edit mode */
+.sample-banner { font-size: 11px; color: var(--muted); text-align: center; padding: 6px 16px; border-bottom: 1px solid var(--hairline-soft); }
+.sample-banner:empty { display: none; }
+.sample-banner.edit-bar { background: var(--ink); color: #fff; border-bottom: 0; }
+.sample-banner.edit-bar a { color: #fff; text-decoration: underline; }
+.edit-slot { display: none; }
+.edit-btn { position: absolute; right: 10px; top: 10px; z-index: 2; display: inline-flex; align-items: center; height: 28px; padding: 0 10px; border-radius: var(--r-pill); background: rgba(28, 26, 23, 0.82); color: #fff; font-size: 11px; letter-spacing: 0.06em; cursor: pointer; }
+.edit-btn.busy { opacity: 0.7; }
+.edit-btn input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+.rowl .edit-btn { right: 2px; top: 2px; height: 20px; padding: 0 6px; font-size: 9px; }
+
+/* member pages (入 · 审): form controls shared by the Japanese and Chinese desks */
+.lb { font-size: 12px; color: var(--muted); }
+.inp { height: 44px; border: 1px solid var(--hairline); border-radius: 8px; background: #fff; padding: 0 12px; font-size: 16px; width: 100%; }   /* not `.in` — that is the reveal state */
+textarea.inp { height: auto; padding: 10px 12px; line-height: 1.7; resize: vertical; }
+.chip { height: 36px; padding: 0 12px; border: 1px solid var(--hairline); border-radius: var(--r-pill); background: #fff; font-size: 13px; }
+.chip.on { border-color: var(--ink); background: var(--ink); color: #fff; }
+.chip.season.on { border-color: var(--season); background: var(--season); }
+.status { font-size: 11px; padding: 2px 8px; border: 1px solid var(--hairline); border-radius: var(--r-pill); color: var(--muted); white-space: nowrap; }
+.status.review { border-color: var(--winter); color: var(--winter); }
+.status.published { border-color: var(--summer); color: var(--summer); }
+.status.reserved { border-color: var(--gold-line); color: var(--gold-text); }
+.status.sold { border-color: var(--autumn); color: var(--autumn); }
+.msg { font-size: 12px; color: var(--muted); min-height: 16px; }
+.msg.err { color: var(--autumn); }
+.list a, .list button.row { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 10px 0; border-top: 1px solid var(--hairline-soft); color: var(--ink); font-size: 14px; text-align: left; background: none; border-left: 0; border-right: 0; border-bottom: 0; width: 100%; }
+.list a.on, .list button.row.on { background: var(--surface); margin: 0 -8px; padding-left: 8px; padding-right: 8px; border-radius: 8px; }
+.gate-list { display: flex; flex-direction: column; gap: 6px; font-size: 13px; }
+.gate-list .ok::before { content: '✓ '; color: var(--summer); }
+.gate-list .no::before { content: '✗ '; color: var(--autumn); }
+.gate-list .opt { color: var(--muted); }
+.thumbs { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+.thumbs figure { position: relative; aspect-ratio: 1; border-radius: 8px; overflow: hidden; background: var(--ph); }
+.thumbs img, .thumbs video { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+.thumbs figcaption { position: absolute; left: 4px; bottom: 4px; font-size: 10px; background: rgba(246, 242, 234, 0.85); padding: 1px 4px; border-radius: 4px; }

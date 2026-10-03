@@ -106,3 +106,17 @@ def test_api_public_read_strips_private_fields():
     assert api.handle('tree', {'slug': ['hong-yu']})[0] == 200
     assert api.handle('tree', {'slug': ['nope']})[0] == 404
     assert api.handle('bogus', {})[0] == 404
+
+
+def test_every_species_has_an_intro_and_reading_links():
+    for s in SPECIES:
+        k = (s.get('knowledge') or {}).get('zh') or {}
+        assert k.get('intro') and len(k['intro']) <= 120, f"{s['id']}: a one-sentence 中文 intro"
+        for key in ('origin', 'character', 'culture', 'growth', 'care'):
+            assert k.get(key), f"{s['id']}: knowledge.{key}"
+        links = s.get('links') or {}
+        assert links.get('wiki_en', '').startswith('https://en.wikipedia.org/wiki/'), s['id']
+        assert links.get('wiki_ja', '').startswith('https://ja.wikipedia.org/wiki/'), s['id']
+        assert links.get('baike', '').startswith('https://baike.baidu.com/item/'), s['id']
+        # a Japanese term QUOTED in 「」 to explain it is fine; a Japanese glyph in running Chinese is a leak
+        assert not JA_LEAK.search(re.sub('「[^」]*」', '', k['intro']).replace('真柏', '')), f"{s['id']}: the intro carries a Japanese glyph"

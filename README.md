@@ -1,12 +1,11 @@
 # 名木 Mei — prestige Japanese garden trees · exhibition & inquiry
 
 `mei.rakusalab.com` · the isolated sibling of Rakusalab (same paid resources, no shared code).
-Spec: `docs/MEI_TREE_GALLERY_PLAN.md` in the Rakusalab repo (v1.1) and `MEI_SPECIES_SEED.md`.
+Spec: `docs/MEI_TREE_GALLERY_PLAN.md` in the Rakusalab repo (v1.2) and `MEI_SPECIES_SEED.md`; a copy lands in `docs/` here with the next slice.
 
-> **Staging note (2026-10-03).** This folder lives inside the Rakusalab repository only until the
-> GitHub repository `07yang-creator/mei` exists — the session's GitHub integration cannot create
-> repositories. Once it exists, this folder moves there whole (`git subtree split --prefix=mei`) and
-> the Vercel project `mei` is git-linked to it. Nothing here is served by rakusalab.com.
+> Repository `07yang-creator/meiki` (moved here from the Rakusalab working tree on 2026-10-03 with its
+> history). The Vercel project `mei` git-links to this repo; the schema migrations for the shared Supabase
+> project stay in the Rakusalab repo under `supabase/migrations/*_mei_*` (plan D2).
 
 ## What is here (slice P1 + the public gallery)
 
@@ -31,13 +30,12 @@ Nothing to build. Serve the folder statically (`python3 -m http.server 8080` ins
 
 ## Deploy (owner, one time)
 
-1. Create the private GitHub repository `07yang-creator/mei`; move this folder there.
-2. Vercel → New Project → import `mei` → framework **Other**, root `.`, region Seoul (icn1). The
+1. Vercel → New Project → import `mei` → framework **Other**, root `.`, region Seoul (icn1). The
    `vercel.json` here carries the rewrites and the Python function.
-3. Cloudflare DNS → CNAME `mei` → the project's `*.vercel-dns-*.com` target, DNS only (the `mt.` recipe).
-4. Environment variables (when the API moves to Supabase): `SUPABASE_URL`, `SUPABASE_ANON_KEY`,
+2. Cloudflare DNS → CNAME `mei` → the project's `*.vercel-dns-*.com` target, DNS only (the `mt.` recipe).
+3. Environment variables (when the API moves to Supabase): `SUPABASE_URL`, `SUPABASE_ANON_KEY`,
    `SUPABASE_SERVICE_ROLE_KEY`, later `MEI_GEMINI_API_KEY`, `RESEND_API_KEY`.
-5. Fonts: before any China-facing launch, replace the Google Fonts `<link>` (marked DEV ONLY) with
+4. Fonts: before any China-facing launch, replace the Google Fonts `<link>` (marked DEV ONLY) with
    self-hosted subsets (plan §8).
 
 ## Rules that bite

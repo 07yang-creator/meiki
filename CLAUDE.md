@@ -1,7 +1,7 @@
 # CLAUDE.md — 名木 Mei (mei.rakusalab.com)
 
 Three rules, inherited from Rakusalab: **the code wins** over this file; **this is an index**, the spec is
-`docs/MEI_TREE_GALLERY_PLAN.md` (Rakusalab repo until this folder has its own repo); **keep it alive** — change
+`docs/MEI_TREE_GALLERY_PLAN.md` in the Rakusalab repo (`07yang-creator/Rakusalab`; this repo is `07yang-creator/meiki`); **keep it alive** — change
 the stack, routing, auth or data flow and update this file in the same change.
 
 ## Stack

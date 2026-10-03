@@ -15,7 +15,7 @@ def read(p):
 
 def test_pages_exist():
     names = {os.path.relpath(p, ROOT) for p in PAGES}
-    assert {'index.html', 't/index.html', 'journey/index.html', 'legal/index.html'} <= names
+    assert {'index.html', 't/index.html', 'journey/index.html', 'legal/index.html', 'in/index.html', 'login/index.html'} <= names
 
 
 def test_no_google_assets_except_dev_fonts():
@@ -50,3 +50,18 @@ def test_runtime_rules_in_js():
     assert "PROVENANCE" in js and '关东名园出品' in js
     assert not re.search(r'garden_id|name_ja|plot_ref|area_text', js), 'no garden identity fields in the runtime'
     assert 'solarTerm' in js and '秋分' in js
+
+
+def test_member_pages_are_noindex_and_load_auth_before_their_script():
+    for rel in ('in/index.html', 'login/index.html'):
+        html = read(os.path.join(ROOT, rel))
+        assert 'name="robots" content="noindex"' in html, rel
+        assert html.index('assets/auth.js') < len(html), rel
+        assert 'requireLogin' in html or 'intake.js' in html, rel
+
+
+def test_no_google_assets_except_dev_fonts_and_supabase_cdn_only_in_auth():
+    js = read(os.path.join(ROOT, 'assets', 'mei.js'))
+    assert 'cdn.jsdelivr.net' not in js, 'the public gallery runtime loads no third-party script'
+    auth = read(os.path.join(ROOT, 'assets', 'auth.js'))
+    assert 'supabase-js@2' in auth

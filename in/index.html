@@ -1,0 +1,130 @@
+<!doctype html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>入 · 供給者 · 名木 Mei</title>
+<meta name="robots" content="noindex">
+<meta name="mei-base" content="../">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+JP:wght@400;600&amp;family=Shippori+Mincho+B1:wght@500;700&amp;family=Ma+Shan+Zheng&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/mei.css">
+<style>
+  body { font-family: var(--f-sans-ja); }
+  .lb { font-size: 12px; color: var(--muted); }
+  .in { height: 44px; border: 1px solid var(--hairline); border-radius: 8px; background: #fff; padding: 0 12px; font-size: 16px; width: 100%; }
+  textarea.in { height: auto; padding: 10px 12px; line-height: 1.7; resize: vertical; }
+  .chip { height: 36px; padding: 0 12px; border: 1px solid var(--hairline); border-radius: var(--r-pill); background: #fff; font-size: 13px; }
+  .chip.on { border-color: var(--ink); background: var(--ink); color: #fff; }
+  .chip.season.on { border-color: var(--season); background: var(--season); }
+  .shots { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 8px; }
+  .shot { position: relative; aspect-ratio: 1; border: 1px dashed var(--muted); border-radius: 8px; display: flex; align-items: flex-end; padding: 4px; font-size: 10px; color: var(--muted); background: transparent; overflow: hidden; cursor: pointer; }
+  .shot.done { border: 0; background: var(--ph); color: var(--ink); }
+  .shot img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .shot span { position: relative; background: rgba(246, 242, 234, 0.85); padding: 1px 4px; border-radius: 4px; }
+  .shot input { position: absolute; inset: 0; opacity: 0; cursor: pointer; }
+  .trees a { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 8px; padding: 10px 0; border-top: 1px solid var(--hairline); color: var(--ink); font-size: 14px; }
+  .status { font-size: 11px; padding: 2px 8px; border: 1px solid var(--hairline); border-radius: var(--r-pill); color: var(--muted); }
+  .status.review { border-color: var(--winter); color: var(--winter); }
+  .status.published { border-color: var(--summer); color: var(--summer); }
+  .msg { font-size: 12px; color: var(--muted); min-height: 16px; }
+  .msg.err { color: var(--autumn); }
+  @media (min-width: 900px) { .two { display: grid; grid-template-columns: 320px minmax(0, 1fr); gap: 40px; align-items: start; } }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="hdr">
+    <span style="display: flex; align-items: center; gap: 10px"><span class="seal">名木</span><span class="dja" style="font-size: 14px; color: var(--muted)">入 · 供給者</span></span>
+    <nav><span id="who" class="muted" style="font-size: 12px"></span><a href="#" id="logout" style="color: var(--muted)">ログアウト</a></nav>
+  </header>
+
+  <main id="gate" style="padding-top: 24px"></main>
+
+  <main id="app" class="two" hidden>
+    <aside class="stack" style="gap: 12px">
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h1 class="dja" style="font-size: 20px; font-weight: 400">樹木一覧</h1>
+        <button type="button" id="new" class="btn ghost" style="height: 36px; padding: 0 14px">＋ 新しい樹木</button>
+      </div>
+      <div id="trees" class="trees stack"></div>
+      <p class="muted" style="font-size: 11px; line-height: 1.6">提出した樹木はスタッフが審査します。公開後は編集できません（スタッフにお知らせください）。</p>
+    </aside>
+
+    <form id="form" class="stack" style="gap: 18px" novalidate>
+      <div style="display: flex; justify-content: space-between; align-items: baseline">
+        <h2 class="dja" style="font-size: 22px; font-weight: 400"><span id="f-title">新しい樹木</span></h2>
+        <span id="f-no" class="num muted" style="font-size: 12px; letter-spacing: 0.1em"></span>
+      </div>
+
+      <div class="stack" style="gap: 6px">
+        <label class="lb" for="f-species">樹種（一覧から選ぶ · 無いときは「その他」）</label>
+        <select id="f-species" class="in" required></select>
+      </div>
+      <div class="stack" style="gap: 6px">
+        <label class="lb" for="f-name">名（任意 · 園で呼んでいる名があれば）</label>
+        <input id="f-name" class="in" type="text" maxlength="40">
+      </div>
+      <div class="stack" style="gap: 6px">
+        <label class="lb" for="f-cultivar">品種（任意 · 錦松・野村・糸魚川 など）</label>
+        <input id="f-cultivar" class="in" type="text" maxlength="40">
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px">
+        <div class="stack" style="gap: 6px"><label class="lb" for="f-h">樹高 cm</label><input id="f-h" class="in num" type="number" inputmode="numeric" min="0" max="9999"></div>
+        <div class="stack" style="gap: 6px"><label class="lb" for="f-w">枝張り cm</label><input id="f-w" class="in num" type="number" inputmode="numeric" min="0" max="9999"></div>
+        <div class="stack" style="gap: 6px"><label class="lb" for="f-g">幹周 cm（目通り 1.2 m）</label><input id="f-g" class="in num" type="number" inputmode="numeric" min="0" max="999"></div>
+        <div class="stack" style="gap: 6px"><label class="lb" for="f-r">根鉢 cm（掘り取り前は空欄）</label><input id="f-r" class="in num" type="number" inputmode="numeric" min="0" max="999"></div>
+        <div class="stack" style="gap: 6px"><label class="lb" for="f-a">樹齢（推定）年</label><input id="f-a" class="in num" type="number" inputmode="numeric" min="0" max="2000"></div>
+        <div class="stack" style="gap: 6px"><label class="lb" for="f-plot">圃場・区画（非公開）</label><input id="f-plot" class="in" type="text" maxlength="40"></div>
+      </div>
+
+      <div class="stack" style="gap: 8px">
+        <span class="lb">樹形</span>
+        <div id="f-form" style="display: flex; flex-wrap: wrap; gap: 8px"></div>
+      </div>
+      <div class="stack" style="gap: 8px">
+        <span class="lb">見頃（樹種の既定が選ばれています · 変えられます）</span>
+        <div id="f-season" style="display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 8px"></div>
+      </div>
+      <div class="stack" style="gap: 8px">
+        <span class="lb">根回し</span>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap" id="f-nema"></div>
+        <input id="f-nema-date" class="in" type="date" style="max-width: 220px" aria-label="根回しの日付">
+      </div>
+      <div class="stack" style="gap: 8px">
+        <label class="lb" for="f-memo">メモ（現場の言葉で · 原文はそのまま残ります）</label>
+        <textarea id="f-memo" class="in" rows="5" maxlength="4000"></textarea>
+      </div>
+
+      <div class="stack" style="gap: 8px">
+        <div style="display: flex; justify-content: space-between; align-items: baseline"><span class="lb">写真 · 10枚の標準カット（同じ順で · 同じ場所で）</span><span id="shot-count" class="num" style="font-size: 12px">0 / 10</span></div>
+        <div style="display: flex; gap: 8px; flex-wrap: wrap; align-items: center">
+          <span class="lb">撮影の季節</span><div id="shoot-season" style="display: flex; gap: 6px"></div>
+          <label class="lb" for="shoot-date" style="margin-left: 8px">撮影日</label><input id="shoot-date" class="in" type="date" style="width: 170px; height: 36px">
+        </div>
+        <div id="shots" class="shots"></div>
+        <p class="muted" style="font-size: 11px; line-height: 1.6">iPhone は「互換性優先」。元データをそのまま選んでください — ブラウザが 2000px に縮小し、位置情報を取り除いてから送ります。1枚ずつでも、まとめてでも。</p>
+      </div>
+
+      <div class="stack" style="gap: 8px">
+        <span class="lb">動画 · 縦 9:16 · 20–40秒 · 正面から一周（H.264 / 互換性優先）</span>
+        <div style="display: grid; grid-template-columns: 96px minmax(0, 1fr); gap: 12px; align-items: center">
+          <label class="shot" style="aspect-ratio: 9 / 16" id="video-slot"><span>動画</span><input id="f-video" type="file" accept="video/mp4,video/quicktime"></label>
+          <div class="stack" style="gap: 4px"><span id="video-info" class="num muted" style="font-size: 12px">未登録</span><span id="video-msg" class="msg"></span></div>
+        </div>
+      </div>
+
+      <p id="msg" class="msg" aria-live="polite"></p>
+      <div style="display: flex; gap: 10px; padding-top: 6px">
+        <button type="button" id="save" class="btn ghost" style="flex-grow: 1; height: 48px">下書き保存</button>
+        <button type="button" id="submit" class="btn" style="flex-grow: 2; height: 48px; font-size: 15px">提出する（審査へ）</button>
+      </div>
+    </form>
+  </main>
+
+  <footer class="ftr" style="margin-top: 40px"><div class="row"><span class="seal m">名木</span><nav><a href="../">展</a><a href="../legal/">法律声明</a></nav></div></footer>
+</div>
+<script src="../assets/auth.js"></script>
+<script src="../assets/intake.js"></script>
+</body>
+</html>

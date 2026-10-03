@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>名木 Mei — 日本名木 · 关东名园出品</title>
+<meta name="description" content="日本名木的四季展厅。每一株皆为独立个体，各有其見頃。关东名园出品，价格议定，出口可否逐案确认。">
+<meta name="mei-base" content="./">
+<meta property="og:title" content="名木 Mei — 日本名木 · 关东名园出品">
+<meta property="og:description" content="日本名木的四季展厅。每一株皆为独立个体，各有其見頃。">
+<link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+<!-- DEV ONLY: fonts from Google Fonts. Production self-hosts subsets (plan §8) — nothing Google-hosted on a China-facing page. -->
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&amp;family=Noto+Serif+JP:wght@400;600&amp;family=Shippori+Mincho+B1:wght@500;700&amp;family=ZCOOL+XiaoWei&amp;family=Ma+Shan+Zheng&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="assets/mei.css">
+</head>
+<body>
+<div id="sample-banner" class="sample-banner" aria-live="polite"></div>
+<div class="wrap">
+  <header class="hdr">
+    <a class="brand" href="./" aria-label="名木 Mei 首页"><span class="seal">名木</span><span class="brush">名木</span></a>
+    <nav>
+      <a href="./" aria-current="page">展</a>
+      <a href="./?sold=1">成交实绩</a>
+      <a href="find/">寻木</a>
+      <a href="journey/">木の旅</a>
+      <a href="./?lang=zh" title="中文 · 日本語 · English">中文</a>
+    </nav>
+  </header>
+
+  <section class="stack" style="padding-top: 26px; gap: 14px">
+    <p class="dzh" style="font-size: 22px; line-height: 1.6">日本名木，关东名园出品。<br>每一株皆为独立个体，各有其見頃。</p>
+    <p class="dja muted" lang="ja" style="font-size: 12px">日本の名木 · 関東の名園出品 <span class="en" style="font-size: 13px">· Prestige garden trees of Japan</span></p>
+  </section>
+
+  <main id="mei-home" style="margin-top: 14px"></main>
+
+  <section class="panel white stack reveal in" style="margin-top: 36px; gap: 10px">
+    <p class="dzh" style="font-size: 19px; line-height: 1.5">未见心仪之木？告诉我们您在找什么。</p>
+    <svg class="orn wave" viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true" style="height: 12px"><path d="M0 6 C27 0 53 12 80 6 S133 0 160 6 S213 12 240 6 S293 0 320 6" fill="none" stroke="#4F6B4A" stroke-width="1"></path></svg>
+    <p class="muted" lang="ja" style="font-size: 12px">お探しの木をお聞かせください <span class="en" style="font-size: 13px">· Tell us what you are looking for</span></p>
+    <a class="btn ghost" href="find/" style="align-self: flex-start; padding: 0 18px">寻木委托 →</a>
+  </section>
+
+  <section class="stack" style="padding-top: 30px; gap: 10px">
+    <label for="sub-email" class="muted" style="font-size: 13px">上新通知（邮件，可随时退订）</label>
+    <form style="display: flex; gap: 8px" action="api/mei?action=subscribe" method="post" onsubmit="event.preventDefault(); this.querySelector('[data-msg]').textContent = '订阅功能在 P6 上线。';">
+      <input id="sub-email" class="input" type="email" name="email" placeholder="you@example.com" required>
+      <button type="submit" class="btn ghost" style="padding: 0 18px">订阅</button>
+      <span data-msg class="muted" style="font-size: 12px; align-self: center"></span>
+    </form>
+  </section>
+
+  <footer class="ftr">
+    <div class="row">
+      <span class="seal m">名木</span>
+      <nav><a href="legal/">法律声明</a><a href="legal/#contact">联系</a><a href="journey/">木の旅</a></nav>
+    </div>
+    <span>关东名园出品 · 関東の名園出品 · <span class="en" style="font-size: 13px">From a distinguished Kantō garden</span></span>
+    <span>活体植物，存活不作保证；价格议定；出口可否逐案确认。</span>
+  </footer>
+</div>
+<script src="assets/qr.js"></script>
+<script src="assets/mei.js"></script>
+</body>
+</html>

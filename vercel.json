@@ -1,0 +1,16 @@
+{
+  "framework": null,
+  "outputDirectory": ".",
+  "regions": ["icn1"],
+  "functions": {
+    "api/mei.py": { "maxDuration": 30, "includeFiles": "{api/_*.py,data/*.json}" }
+  },
+  "rewrites": [
+    { "source": "/t/:slug", "destination": "/t/index.html?slug=:slug" },
+    { "source": "/api/config", "destination": "/api/mei?action=client_config" }
+  ],
+  "headers": [
+    { "source": "/data/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=300" }] },
+    { "source": "/assets/(.*)", "headers": [{ "key": "Cache-Control", "value": "public, max-age=86400" }] }
+  ]
+}

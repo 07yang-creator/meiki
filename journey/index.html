@@ -1,0 +1,117 @@
+<!doctype html>
+<html lang="zh-Hans">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>每一棵树的旅程 · 木の旅 · 名木 Mei</title>
+<meta name="description" content="从断根到植入的流程说明与风险分担。这是说明，不是承诺。">
+<meta name="mei-base" content="../">
+<link rel="icon" href="../assets/favicon.svg" type="image/svg+xml">
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;600&amp;family=Noto+Serif+JP:wght@400;600&amp;family=Shippori+Mincho+B1:wght@500;700&amp;family=ZCOOL+XiaoWei&amp;family=Ma+Shan+Zheng&amp;family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400&amp;display=swap" rel="stylesheet">
+<link rel="stylesheet" href="../assets/mei.css">
+<style>
+  .gate { display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 12px; padding: 12px 0; border-top: 1px solid var(--hairline); }
+  .gate:last-child { border-bottom: 1px solid var(--hairline); }
+  .gate .n { width: 28px; height: 28px; border: 1px solid var(--ink); border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 12px; }
+  .gate .t { font-family: var(--f-dzh); font-size: 15px; }
+  .gate .d { font-size: 12px; color: var(--muted); }
+  .risk { display: grid; grid-template-columns: minmax(0, 1fr) 110px; gap: 8px; padding: 9px 0; border-top: 1px solid var(--hairline); font-size: 13px; }
+  .risk:last-child { border-bottom: 1px solid var(--hairline); }
+  .risk span:last-child { color: var(--muted); }
+  @media (min-width: 900px) { .cols { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px; } }
+</style>
+</head>
+<body class="s-winter">
+<div class="wrap">
+  <header class="hdr">
+    <a class="brand" href="../" aria-label="名木 Mei 首页"><span class="seal">名木</span><span class="brush">名木</span></a>
+    <nav><a href="../">展</a><a href="../?sold=1">成交实绩</a><a href="../find/">寻木</a><a href="./" aria-current="page">木の旅</a><a href="?lang=zh">中文</a></nav>
+  </header>
+
+  <section class="stack" style="padding-top: 28px; gap: 10px">
+    <span class="lbl">物流与交付 · 輸送と検疫</span>
+    <h1 class="dzh" style="font-size: 34px; font-weight: 400; line-height: 1.3">每一棵树的旅程</h1>
+    <svg class="orn brushline" viewBox="0 0 220 12" aria-hidden="true"><path d="M2 7 C55 1 110 11 218 4 C110 7 55 4 2 7 Z" fill="#1C1A17" fill-opacity="0.85"></path></svg>
+    <p class="muted" lang="ja" style="font-size: 14px">木の旅 — 根回しから植え付けまで</p>
+    <p style="font-size: 14px; line-height: 1.9; margin-top: 6px; max-width: 640px">这是流程说明，不是承诺。树价不含物流；中国一侧由买方委托的持证进口商主导，我们负责日本一侧。没有人能保证存活与树姿不变。</p>
+  </section>
+
+  <section class="export s-autumn" style="margin-top: 24px; max-width: 640px">
+    <svg class="arc" width="10" height="64" viewBox="0 0 10 64" aria-hidden="true"><path d="M8 2 C0 22 0 42 8 62" fill="none" stroke="#9E4B2C" stroke-width="2" stroke-linecap="round"></path></svg>
+    <span class="lbl">先说可否</span>
+    <p class="zh" style="font-size: 15px">松属（黑松 · 赤松 · 五针松）与李属（梅 · 樱）的活体植物目前不能进入中国大陆；罗汉松的议定书暂停中。此类树木仅作展示，或面向日本国内与其他地区。</p>
+    <p class="fixed">以上为植物检疫一般信息，不构成法律意见；具体以中国海关及日本植物防疫所的现行规定为准。<span class="num">最后核对 2026-10</span></p>
+  </section>
+
+  <div class="cols">
+  <div>
+  <section class="stack" style="padding-top: 28px; gap: 12px">
+    <h2 class="dzh" style="font-size: 20px; font-weight: 400">赏在四季，移在冬</h2>
+    <div class="season-nav" aria-hidden="true">
+      <span class="s-spring" style="flex-grow:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0;border:1px solid var(--hairline);border-radius:999px;background:#fff"><span class="brush" style="font-size:24px;line-height:1;color:var(--spring)">春</span><span class="muted" style="font-size:10px">看花</span></span>
+      <span class="s-summer" style="flex-grow:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0;border:1px solid var(--hairline);border-radius:999px;background:#fff"><span class="brush" style="font-size:24px;line-height:1;color:var(--summer)">夏</span><span class="muted" style="font-size:10px">看绿</span></span>
+      <span class="s-autumn" style="flex-grow:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0;border:1px solid var(--hairline);border-radius:999px;background:#fff"><span class="brush" style="font-size:24px;line-height:1;color:var(--autumn)">秋</span><span class="muted" style="font-size:10px">看叶</span></span>
+      <span class="s-winter" style="flex-grow:1;display:flex;flex-direction:column;align-items:center;gap:2px;padding:10px 0;border:1px solid var(--winter);border-radius:999px;background:var(--winter)"><span class="brush" style="font-size:24px;line-height:1;color:#fff">冬</span><span style="font-size:10px;color:#fff">起挖 · 出货</span></span>
+    </div>
+    <p class="muted" style="font-size: 13px; line-height: 1.8">树只在休眠期移动（约 11–2 月）。六月的委托，到下一个冬天出货；盛夏不出货——树在码头等待的日子，比海上的日子长。</p>
+  </section>
+
+  <section class="stack" style="padding-top: 28px; gap: 14px">
+    <svg class="orn wave" viewBox="0 0 358 14" preserveAspectRatio="none" aria-hidden="true"><path d="M0 7 C30 0 60 14 90 7 S150 0 180 7 S240 14 270 7 S330 0 358 7" fill="none" stroke="#3F5563" stroke-width="1.2"></path></svg>
+    <h2 class="dzh" style="font-size: 20px; font-weight: 400">七道门 <span class="muted" style="font-size: 12px; font-family: var(--f-sans)">— 每一道过了才走下一道</span></h2>
+    <ol style="margin: 0; padding: 0; list-style: none; display: flex; flex-direction: column">
+      <li class="gate"><span class="n num">1</span><div class="stack" style="gap:3px"><span class="t">树种可否进入目的地</span><span class="d">我们 + 进口商报关行 · 1–4 周 · 不可则仅展示</span></div></li>
+      <li class="gate"><span class="n num">2</span><div class="stack" style="gap:3px"><span class="t">持证进口商 + 已核准的隔离场所</span><span class="d">买方 · 既有进口商数周，新建场所数月 · 没有则无法签约</span></div></li>
+      <li class="gate"><span class="n num">3</span><div class="stack" style="gap:3px"><span class="t">进境动植物检疫许可证</span><span class="d">进口商 · 签约之前 · 1–2 个月，若需专家来日预检 6–12 个月 · 起挖前被拒则全额退还定金</span></div></li>
+      <li class="gate"><span class="n num">4</span><div class="stack" style="gap:3px"><span class="t">去土入盆，在登录圃场养一个生长季</span><span class="d">园主 · 断根在先（1–3 年）· 起挖后 12–18 个月 · 衰弱为卖方风险，退还定金</span></div></li>
+      <li class="gate"><span class="n num">5</span><div class="stack" style="gap:3px"><span class="t">线虫预检合格</span><span class="d">园主 + 植物防疫所 · 出货前的秋季 · 不合格则处理复检，或顺延到下一个窗口</span></div></li>
+      <li class="gate"><span class="n num">6</span><div class="stack" style="gap:3px"><span class="t">订舱 + 出口检疫证书</span><span class="d">出口方 + 货代 · 开顶/框架箱提前 3–4 周 · 截关前 3–7 天检疫 · 证书逐字对应许可证</span></div></li>
+      <li class="gate"><span class="n num" style="border-color: var(--winter); color: var(--winter)">7</span><div class="stack" style="gap:3px"><span class="t">休眠期窗口 <span style="color: var(--winter)">11–2 月</span></span><span class="d">货代 · 6–9 月不出货 · 错过则在园中留养，另计留养费</span></div></li>
+    </ol>
+    <p class="muted" style="font-size: 13px; line-height: 1.8">船到之后：口岸检疫 2–10 个工作日 → 指定隔离场所隔离（期限以许可证所载为准，多年生通常 2–3 年）→ 大件运输与吊装种植 → 12–24 个月成活观察。</p>
+  </section>
+
+  <section class="panel stack" style="margin-top: 28px; gap: 8px">
+    <span class="lbl">举例 · 一株 4–5 m 鸡爪槭</span>
+    <svg class="orn wave" viewBox="0 0 320 12" preserveAspectRatio="none" aria-hidden="true" style="height:12px"><path d="M0 6 C27 0 53 12 80 6 S133 0 160 6 S213 12 240 6 S293 0 320 6" fill="none" stroke="#9E4B2C" stroke-width="1"></path></svg>
+    <p class="num" style="font-size: 13px; line-height: 1.9">春 Y0 断根 → 秋 Y0 许可证到手 → 2–3 月 Y1 起挖·洗根·入盆 → Y1 生长季养护 → 12 月 Y1–2 月 Y2 检疫·装船 → 口岸 + 隔离 0–3 年 → 下一个休眠期定植 → 12–24 个月观察</p>
+    <p class="muted" style="font-size: 12px; line-height: 1.7">无隔离要求约 2 年到达客户庭园；含 2–3 年隔离则 4–5 年。黑松在第 1 道门即止。</p>
+  </section>
+  </div>
+
+  <div>
+  <section class="stack" style="padding-top: 28px; gap: 10px">
+    <h2 class="dzh" style="font-size: 20px; font-weight: 400">风险与责任 <span class="muted" style="font-size: 12px; font-family: var(--f-sans)">— 默认分担，均可在合同中另行约定</span></h2>
+    <div class="stack">
+      <div class="risk"><span>起挖、养护期间在日本衰弱或枯死</span><span>园方 · 退定金</span></div>
+      <div class="risk"><span>日本出口检疫不合格</span><span>卖方 · 顺延或解约</span></div>
+      <div class="risk"><span>许可被拒 / 政策变化</span><span>买方承担申请费</span></div>
+      <div class="risk"><span>中国口岸检疫不合格</span><span>依合同 · 默认买方</span></div>
+      <div class="risk"><span>运输延误、热害；运输中枯死实际上不可保</span><span>买方 · 交货点后</span></div>
+      <div class="risk"><span>隔离期与定植后枯死</span><span>买方 · 不保成活</span></div>
+    </div>
+  </section>
+
+  <section class="stack" style="padding-top: 28px; gap: 10px">
+    <h2 class="dzh" style="font-size: 20px; font-weight: 400">费用构成 <span class="muted" style="font-size: 12px; font-family: var(--f-sans)">— 不列数字；报价由货代与进口商出具，我们协助取得</span></h2>
+    <div style="font-size: 12px; line-height: 1.8">
+      <p><span class="muted">日本</span><br>断根 · 起挖与根球包扎 · 吊车 · 圃场养护 · 去土与介质 · 检疫与处理 · 包装（ISPM-15）· 内陆运输与许可 · 货代</p>
+      <p style="margin-top: 8px"><span class="muted">海运 / 中国</span><br>运费与超限附加 · 保险（仅外部风险）· 许可与疫情监测费 · 报关行 · 关税与增值税 · 口岸检疫与滞期 · 隔离场所 · 大件运输 · 种植与首年养护 · 应急预留</p>
+    </div>
+    <p class="muted" style="font-size: 12px; line-height: 1.7">付款节奏与七道门相扣：签约时可退定金 → 买方书面要求起挖后转为不可退的整备费 → 出货前付清 → 物流另行开票。</p>
+  </section>
+
+  <section class="card stack" style="margin-top: 28px; padding: 14px 16px; gap: 6px">
+    <p style="font-size: 12px; line-height: 1.7">树木是活物，可能无明显原因枯死；照片与影像反映拍摄当日之姿，出口整备（去土、修剪）会改变树形；尺寸为近似值；不提供成活保证；买方应自行咨询检疫顾问；以合同条款为准。本计划为目安，随许可、运输、气象变动。</p>
+    <p class="muted" lang="ja" style="font-size: 11px; line-height: 1.7">本計画は目安であり、許可・運送・気象により変動します。</p>
+  </section>
+  <p class="muted" style="font-size: 11px; line-height: 1.7; padding-top: 20px">我们参考了：日本植物防疫所「盆栽・植木の輸出検疫について」（2026-02）· 中国海关总署 进境植物检疫禁止进境物名录 · 进境植物繁殖材料检疫管理办法 · 香港渔护署植物进口规定 · <span class="num">最后核对 2026-10</span>。上线前由人工重读原文并由律师与报关行复核（计划 §18）。</p>
+  </div>
+  </div>
+
+  <footer class="ftr" style="margin-top: 40px">
+    <div class="row"><span class="seal m">名木</span><nav><a href="../legal/">法律声明</a><a href="../legal/#contact">联系</a><a href="../">展</a></nav></div>
+  </footer>
+</div>
+</body>
+</html>

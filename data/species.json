@@ -1,0 +1,790 @@
+{
+ "generated": "2026-10-03",
+ "source": "docs/MEI_SPECIES_SEED.md",
+ "species": [
+  {
+   "id": "podocarpus-macrophyllus",
+   "latin": "Podocarpus macrophyllus",
+   "ja": "槇（槙・犬槇）",
+   "ja_reading": "マキ・イヌマキ (maki, inumaki); ラカンマキ (rakanmaki) = var. maki",
+   "zh": "罗汉松",
+   "zht": "羅漢松",
+   "en": "Buddhist pine / kusamaki (yew plum pine)",
+   "category": "conifer",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 槇 and 槙 are two glyph variants of ONE JA character; in ZH 槙 (zhēn) is a near-dead character meaning nothing to a buyer. The ZH name is 罗汉松 — the plant Chinese buyers prize most (wealth symbol). ラカンマキ (short-leaf form) = 短叶罗汉松. Store 槇/槙 as JA variants of one row.",
+   "best_season": "winter",
+   "rank": 1,
+   "trade": {
+    "CN": {
+     "status": "protocol",
+     "note_staff": "PROTOCOL-CN: the one garden tree with an established Japan→China route (MAFF 中国向けイヌマキの輸出: 植物防疫所-registered garden + tree → Chinese expert pre-inspection in Japan → CN import permit). Registration is per garden/tree — ask the supplier whether THIS tree is registered before showing it as exportable.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": {
+    "zh": {
+     "origin": "日本关东以西与中国南部；华南庭园中久负盛名的「罗汉松」。",
+     "character": "常绿乔木，叶线状披针形而厚，树皮纵裂；枝可整成层云（段作り）。",
+     "culture": "在中国寓意「家有罗汉松，世世不受穷」，是江南与岭南庭院的祥木；在日本是千叶县的县木。",
+     "growth": "生长缓慢，寿命长；喜温暖湿润，耐半阴，耐修剪。",
+     "care": "避寒风；忌积水；春季整枝一次可保层云之形；移植以早春为宜。"
+    }
+   },
+   "latin_note": null
+  },
+  {
+   "id": "pinus-parviflora",
+   "latin": "Pinus parviflora",
+   "ja": "五葉松",
+   "ja_reading": "ゴヨウマツ (goyōmatsu)",
+   "zh": "日本五针松",
+   "zht": "日本五針松",
+   "en": "Japanese white pine (five-needle pine)",
+   "category": "pine",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND in Traditional: 五葉松 in Taiwan means Pinus morrisonicola (台灣五葉松), a different species. In Simplified 五叶松 is loose/colloquial; the standard is 日本五针松 (JA counts leaves 葉, ZH counts needles 针). Always qualify with 日本 + Latin.",
+   "best_season": "winter",
+   "rank": 2,
+   "trade": {
+    "CN": {
+     "status": "prohibited",
+     "note_staff": "PROHIBITED-CN: same Pinus bar (pine wood nematode) — not importable to mainland China as a live tree.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "pinus-thunbergii",
+   "latin": "Pinus thunbergii",
+   "ja": "黒松",
+   "ja_reading": "クロマツ (kuromatsu)",
+   "zh": "黑松（日本黑松）",
+   "zht": "黑松（日本黑松）",
+   "en": "Japanese black pine",
+   "category": "pine",
+   "false_friend": false,
+   "kanji_note": "Same plant, different glyph: JA 黒 is shinjitai, ZH is 黑 in both Simplified and Traditional. Never paste 黒松 into a ZH slot. 錦松 (nishikimatsu, cork-bark) is a cultivar of this species, not a separate species.",
+   "best_season": "winter",
+   "rank": 3,
+   "trade": {
+    "CN": {
+     "status": "prohibited",
+     "note_staff": "PROHIBITED-CN: mainland China's 禁止进境物名录 bars Pinus seedlings/scions from pine-wood-nematode countries, Japan included — not importable to CN as a live tree; display-only for CN buyers, other markets (EU/UK) only via 2-year registered-garden inspection.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": {
+    "zh": {
+     "origin": "日本本州以南与朝鲜半岛南部的海岸；耐盐风，是日本海滨松林的主角。",
+     "character": "常绿乔木，树皮黑灰而龟裂，针叶粗硬深绿，枝态苍劲；庭园中多作主木或门冠。",
+     "culture": "日本庭园与盆栽的「松」之代表，象征长寿与不屈；松竹梅之首。",
+     "growth": "生长缓慢而长寿，可达数百年；喜阳光与排水，耐贫瘠与盐风。",
+     "care": "全日照；忌积水；每年摘芽（みどり摘み）与古叶整理维持树形；移植需提前断根。"
+    }
+   },
+   "latin_note": null
+  },
+  {
+   "id": "pinus-densiflora",
+   "latin": "Pinus densiflora",
+   "ja": "赤松",
+   "ja_reading": "アカマツ (akamatsu)",
+   "zh": "赤松（日本赤松）",
+   "zht": "赤松（日本赤松）",
+   "en": "Japanese red pine",
+   "category": "pine",
+   "false_friend": false,
+   "kanji_note": "Same characters, same plant in ZH botany (赤松 = P. densiflora). Trap: do NOT 'translate' 赤 to 红 — 红松 in ZH is Pinus koraiensis (Korean pine), a different species.",
+   "best_season": "winter",
+   "rank": 4,
+   "trade": {
+    "CN": {
+     "status": "prohibited",
+     "note_staff": "PROHIBITED-CN: same Pinus bar as 黒松 (pine wood nematode) — not importable to mainland China as a live tree.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "acer-palmatum",
+   "latin": "Acer palmatum",
+   "ja": "紅葉",
+   "ja_reading": "モミジ (momiji); イロハモミジ (irohamomiji)",
+   "zh": "鸡爪槭（日本红枫）",
+   "zht": "雞爪槭 / 掌葉槭（日本紅楓）",
+   "en": "Japanese maple (momiji)",
+   "category": "maple",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 紅葉 in ZH (红叶, hóngyè) means 'red autumn leaves' — a phenomenon, not a species. Never show 紅葉/红叶 as a species name in ZH or EN. ZH is 鸡爪槭 (Taiwan: 掌葉槭); buyers say 日本红枫. Cultivars (出猩々, 野村, 枝垂れ) go in the cultivar field.",
+   "best_season": "autumn",
+   "rank": 5,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Acer palmatum (incl. A. amoenum, A. shirasawanum)"
+  },
+  {
+   "id": "acer",
+   "latin": "Acer spp.",
+   "ja": "楓",
+   "ja_reading": "カエデ (kaede)",
+   "zh": "枫树（槭）/ 日本红枫",
+   "zht": "楓樹（槭樹）",
+   "en": "Maple (Japanese maples)",
+   "category": "maple",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND in botany: ZH 枫 strictly = Liquidambar (枫香, sweetgum); maples are 槭 (qì). Buyers nonetheless say 枫树 / 日本红枫 for Acer, so show the buyer term plus the species-level ZH (鸡爪槭, 三角枫 for トウカエデ) and Latin. Genus-level row; prefer a species-level row for signature trees.",
+   "best_season": "autumn",
+   "rank": 6,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Acer spp. (A. palmatum, A. amoenum, A. buergerianum)"
+  },
+  {
+   "id": "juniperus-chinensis-sargentii",
+   "latin": "Juniperus chinensis var. sargentii",
+   "ja": "真柏",
+   "ja_reading": "シンパク (shinpaku); ミヤマビャクシン (miyama-byakushin)",
+   "zh": "真柏（偃柏／圆柏）",
+   "zht": "真柏（偃柏／圓柏）",
+   "en": "Sargent juniper (shimpaku)",
+   "category": "conifer",
+   "false_friend": false,
+   "kanji_note": "The compound 真柏 is understood in ZH bonsai/garden circles (borrowed from JA); the botanical ZH name is 偃柏 (var. sargentii) under 圆柏 (J. chinensis). Trap on the single character: 柏 alone in JA = カシワ (Quercus dentata, an oak); in ZH 柏 = cypress family — never split the compound. Cultivar 糸魚川 (Itoigawa) goes in the cultivar field.",
+   "best_season": "winter",
+   "rank": 7,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found; conifers from Japan get pest scrutiny; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": {
+    "zh": {
+     "origin": "日本高山与朝鲜半岛、库页岛的岩地；盆栽界所称「真柏」。",
+     "character": "匍匐或半直立的常绿灌木，鳞叶细密，干身易成舍利（枯白木质）与神枝。",
+     "culture": "日本盆栽的名种，糸魚川真柏尤为珍贵；以舍利与水线表现「生与死」的对照。",
+     "growth": "生长缓慢，极耐修剪与蟠扎；喜阳光，耐寒耐旱。",
+     "care": "全日照与通风；忌长期潮湿；舍利部位需定期防腐处理。"
+    }
+   },
+   "latin_note": null
+  },
+  {
+   "id": "prunus-mume",
+   "latin": "Prunus mume",
+   "ja": "梅",
+   "ja_reading": "ウメ (ume)",
+   "zh": "梅（梅花・梅树）",
+   "zht": "梅（梅花・梅樹）",
+   "en": "Japanese apricot / ume (plum blossom)",
+   "category": "flowering",
+   "false_friend": false,
+   "kanji_note": "Same character, same plant; buyers say 梅花 (the blossom) or 梅树 (the tree). EN trap: 'plum' is loose — use ume / Japanese apricot. Garden forms (野梅・紅梅・豊後) are cultivar groups.",
+   "best_season": "spring",
+   "rank": 8,
+   "trade": {
+    "CN": {
+     "status": "no_condition",
+     "note_staff": "CASE-BY-CASE: Prunus not found on China's prohibited catalogue, but no JP→CN protocol and Prunus propagating material draws virus scrutiny; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": {
+    "zh": {
+     "origin": "中国长江流域原产，奈良时代传入日本；今为两国共爱的早春花木。",
+     "character": "落叶小乔木，早春先叶开花，香气清冽；老干苍劲，花枝舒展。",
+     "culture": "中国「岁寒三友」与「四君子」之一，象征高洁；日本自万叶时代咏梅，太宰府天满宫的「飞梅」为名木。",
+     "growth": "生长中速，寿命长，百年老梅常见；喜阳光与排水。",
+     "care": "花后修剪；忌湿；大树移植以落叶后为宜，花芽在夏季形成，秋季勿重剪。"
+    }
+   },
+   "latin_note": null
+  },
+  {
+   "id": "prunus-mume-pendula",
+   "latin": "Prunus mume Pendula",
+   "ja": "枝垂れ梅",
+   "ja_reading": "シダレウメ (shidareume)",
+   "zh": "垂枝梅",
+   "zht": "垂枝梅",
+   "en": "Weeping ume",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (unreadable): contains kana and the JA word order 枝垂 is not Chinese. ZH is 垂枝梅 / 垂梅. Technically a form of 梅; kept as its own row because the garden trade sells it as a distinct item.",
+   "best_season": "spring",
+   "rank": 9,
+   "trade": {
+    "CN": {
+     "status": "no_condition",
+     "note_staff": "CASE-BY-CASE: as 梅 (Prunus — permit + scrutiny, no protocol); confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Prunus mume 'Pendula' (weeping forms)"
+  },
+  {
+   "id": "cerasus",
+   "latin": "Cerasus spp.",
+   "ja": "桜",
+   "ja_reading": "サクラ (sakura); ソメイヨシノ, ヤマザクラ",
+   "zh": "樱花（樱树）",
+   "zht": "櫻花（櫻樹）",
+   "en": "Flowering cherry (sakura)",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (glyph): 桜 is a Japan-only shinjitai form; it is not a Chinese character (ZH 樱 / 櫻). Buyers may guess it, but it reads as Japanese text. Species-level ZH: 东京樱花 (Somei-yoshino), 山樱花 (yamazakura), 日本晚樱 (sato-zakura).",
+   "best_season": "spring",
+   "rank": 10,
+   "trade": {
+    "CN": {
+     "status": "no_condition",
+     "note_staff": "CASE-BY-CASE: as 梅 — Cerasus/Prunus not found on China's prohibited catalogue, no protocol, virus scrutiny; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Cerasus spp. (C. × yedoensis 'Somei-yoshino', C. jamasakura; = Prunus subg. Cerasus)"
+  },
+  {
+   "id": "cerasus-itosakura",
+   "latin": "Cerasus itosakura",
+   "ja": "枝垂れ桜",
+   "ja_reading": "シダレザクラ (shidarezakura)",
+   "zh": "垂枝樱",
+   "zht": "垂枝櫻",
+   "en": "Weeping cherry",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (unreadable): kana + the 桜 glyph. ZH is 垂枝樱 (also 垂樱). A distinct species from most 桜, so it has its own Latin and its own row.",
+   "best_season": "spring",
+   "rank": 11,
+   "trade": {
+    "CN": {
+     "status": "no_condition",
+     "note_staff": "CASE-BY-CASE: as 桜 (Prunus/Cerasus — permit + scrutiny, no protocol); confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Cerasus itosakura (syn. Prunus pendula, P. itosakura)"
+  },
+  {
+   "id": "camellia-japonica",
+   "latin": "Camellia japonica",
+   "ja": "椿",
+   "ja_reading": "ツバキ (tsubaki); ヤブツバキ",
+   "zh": "山茶（山茶花）",
+   "zht": "山茶（山茶花）",
+   "en": "Japanese camellia",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (the textbook one): 椿 in ZH is Toona sinensis — 香椿, the tree whose shoots are eaten. Camellia japonica in ZH is 山茶 / 山茶花. Never auto-translate 椿; never let Gemini keep 椿 in a ZH draft.",
+   "best_season": "winter",
+   "rank": 12,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": {
+    "zh": {
+     "origin": "日本、朝鲜半岛南部与中国东部沿海的常绿林。",
+     "character": "常绿小乔木，叶厚而亮，冬末至春开花，花形端整。",
+     "culture": "日本茶道的「侘」之花，一枝一花插于茶室；中国称山茶，为十大名花之一。",
+     "growth": "生长缓慢，寿命长；喜半阴与湿润空气，耐寒性中等。",
+     "care": "排水良好的酸性土；忌西晒与干风；花后轻剪；移植以早春或秋季为宜。"
+    }
+   },
+   "latin_note": null
+  },
+  {
+   "id": "camellia-sasanqua",
+   "latin": "Camellia sasanqua",
+   "ja": "山茶花",
+   "ja_reading": "サザンカ (sazanka)",
+   "zh": "茶梅",
+   "zht": "茶梅",
+   "en": "Sasanqua camellia",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (the swap): JA 山茶花 = C. sasanqua, but ZH 山茶花 = C. japonica (= JA 椿). Writing the JA kanji in ZH names the OTHER camellia. ZH for sazanka is 茶梅. The pair 椿/山茶花 must be entered by hand, both ways.",
+   "best_season": "winter",
+   "rank": 13,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: as 椿 — no prohibition found, no protocol; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "rhododendron",
+   "latin": "Rhododendron spp.",
+   "ja": "躑躅",
+   "ja_reading": "ツツジ (tsutsuji); オオムラサキ, クルメツツジ",
+   "zh": "杜鹃（杜鹃花）",
+   "zht": "杜鵑（杜鵑花）",
+   "en": "Azalea (evergreen azaleas)",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 躑躅 (踯躅, zhízhú) in ZH is a literary verb 'to pace / hesitate', and 羊踯躅 is the toxic yellow azalea Rhododendron molle. ZH for garden azaleas is 杜鹃 / 杜鹃花; 久留米杜鹃, 大紫杜鹃 for the groups. Genus-level row.",
+   "best_season": "spring",
+   "rank": 14,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Rhododendron spp. (R. × pulchrum 'Oomurasaki', R. × obtusum Kurume group)"
+  },
+  {
+   "id": "rhododendron-indicum",
+   "latin": "Rhododendron indicum",
+   "ja": "皐月",
+   "ja_reading": "サツキ (satsuki)",
+   "zh": "皋月杜鹃",
+   "zht": "皋月杜鵑",
+   "en": "Satsuki azalea",
+   "category": "flowering",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 皐月 / 皋月 in ZH is an old name for the fifth lunar month, not a plant. The ZH botanical name 皋月杜鹃 borrows it but must carry 杜鹃; bonsai circles also say 皋月. Distinct species from 躑躅 (flowers after the main azaleas).",
+   "best_season": "spring",
+   "rank": 15,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: as 躑躅 — no prohibition found, no protocol; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "zelkova-serrata",
+   "latin": "Zelkova serrata",
+   "ja": "欅",
+   "ja_reading": "ケヤキ (keyaki)",
+   "zh": "榉树（光叶榉）",
+   "zht": "櫸樹（光葉櫸）",
+   "en": "Japanese zelkova (keyaki)",
+   "category": "deciduous",
+   "false_friend": false,
+   "kanji_note": "Same plant; 欅 is a variant glyph of 櫸 — readable to Traditional readers, odd to Simplified readers (榉). ZH botanical name for Z. serrata is 光叶榉; 榉树 colloquially also covers Z. schneideriana (大叶榉).",
+   "best_season": "autumn",
+   "rank": 16,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found (China's Ulmus ban names the elm genus, not Zelkova), no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": {
+    "zh": {
+     "origin": "日本、朝鲜半岛与中国东部；关东平原的代表性乡土树。",
+     "character": "落叶大乔木，树冠呈优美的伞形（箒立ち），秋叶黄红。",
+     "culture": "日本街道与神社境内的大树多为榉；木材为和太鼓与家具的上材。",
+     "growth": "生长快而寿命长，可达数百年、树高三十米以上。",
+     "care": "需开阔空间与深厚土壤；少修剪以保天然树形；大树移植需两年以上断根。"
+    }
+   },
+   "latin_note": null
+  },
+  {
+   "id": "osmanthus-fragrans-aurantiacus",
+   "latin": "Osmanthus fragrans var. aurantiacus",
+   "ja": "木犀（金木犀）",
+   "ja_reading": "モクセイ・キンモクセイ (mokusei, kinmokusei)",
+   "zh": "桂花（丹桂）",
+   "zht": "桂花（丹桂）",
+   "en": "Fragrant orange osmanthus (kinmokusei)",
+   "category": "flowering",
+   "false_friend": false,
+   "kanji_note": "Same plant; ZH botany writes 木樨 (樨) or 木犀 (Flora of China uses 木犀科), but every buyer says 桂花, and the orange-flowered キンモクセイ specifically is 丹桂 (white ギンモクセイ = 银桂). Show 桂花（丹桂）, never bare 木犀.",
+   "best_season": "autumn",
+   "rank": 17,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "quercus-myrsinifolia",
+   "latin": "Quercus myrsinifolia",
+   "ja": "樫",
+   "ja_reading": "カシ (kashi); シラカシ (shirakashi), アラカシ, ウバメガシ",
+   "zh": "青冈（小叶青冈）",
+   "zht": "青岡（小葉青岡）",
+   "en": "Evergreen oak (Japanese white oak / bamboo-leaf oak)",
+   "category": "evergreen",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (kokuji): 樫 is a Japanese-made character with no Chinese reading or meaning. ZH names are species-level: シラカシ = 小叶青冈, アラカシ = 青冈栎, ウバメガシ = 乌冈栎. Do not translate as 橡 / 栎 alone (deciduous oaks).",
+   "best_season": "summer",
+   "rank": 18,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: Quercus not found on China's prohibited catalogue, but Japan's oak-wilt (ナラ枯れ) status draws scrutiny and there is no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Quercus myrsinifolia (also Q. glauca, Q. phillyraeoides)"
+  },
+  {
+   "id": "cinnamomum-camphora",
+   "latin": "Cinnamomum camphora",
+   "ja": "楠（樟）",
+   "ja_reading": "クスノキ (kusunoki)",
+   "zh": "樟树（香樟）",
+   "zht": "樟樹（香樟）",
+   "en": "Camphor tree",
+   "category": "evergreen",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 楠 in ZH is Phoebe — 楠木 (nanmu), the imperial timber tree, a different genus and a loaded luxury word. Camphor in ZH is 樟树 / 香樟. JA writes both 楠 and 樟 for kusunoki; store 樟 as the preferred JA glyph for cross-reading, 楠 as a JA variant.",
+   "best_season": "summer",
+   "rank": 19,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "chamaecyparis-obtusa",
+   "latin": "Chamaecyparis obtusa",
+   "ja": "檜",
+   "ja_reading": "ヒノキ (hinoki)",
+   "zh": "日本扁柏",
+   "zht": "日本扁柏",
+   "en": "Hinoki cypress",
+   "category": "conifer",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 檜 (Simplified 桧, guì) in Chinese classically means 圆柏 Juniperus chinensis, a different plant. ZH for hinoki is 日本扁柏. Garden forms (チャボヒバ etc.) are cultivars of this species.",
+   "best_season": "winter",
+   "rank": 20,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "cryptomeria-japonica",
+   "latin": "Cryptomeria japonica",
+   "ja": "杉",
+   "ja_reading": "スギ (sugi)",
+   "zh": "日本柳杉",
+   "zht": "日本柳杉",
+   "en": "Japanese cedar (sugi)",
+   "category": "conifer",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 杉 alone in ZH = 杉木 Cunninghamia lanceolata (China fir) or a generic 'fir'. Sugi is 日本柳杉 (柳杉 Cryptomeria). Never show bare 杉 in ZH. 台杉 (daisugi) is a training form, not a species.",
+   "best_season": "winter",
+   "rank": 21,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "sciadopitys-verticillata",
+   "latin": "Sciadopitys verticillata",
+   "ja": "高野槇",
+   "ja_reading": "コウヤマキ (kōyamaki)",
+   "zh": "金松（日本金松）",
+   "zht": "金松（日本金松）",
+   "en": "Japanese umbrella pine",
+   "category": "conifer",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 高野槇 written in ZH is unreadable (高野 = a Japanese place name, 槇 dead character). ZH is 金松; add 日本 or Latin so it is not confused with 金钱松 (Pseudolarix). JA-side variant 高野槙.",
+   "best_season": "winter",
+   "rank": 22,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no JP→CN protocol — CN import permit (进境动植物检疫许可证) + JP phytosanitary certificate + soil-free root ball; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "torreya-nucifera",
+   "latin": "Torreya nucifera",
+   "ja": "榧",
+   "ja_reading": "カヤ (kaya)",
+   "zh": "日本榧树",
+   "zht": "日本榧樹",
+   "en": "Japanese nutmeg-yew (kaya)",
+   "category": "conifer",
+   "false_friend": true,
+   "kanji_note": "Same genus, different species: 榧 / 榧树 in ZH means Torreya grandis (香榧, the Chinese nut tree). Kaya must be written 日本榧树 + Latin.",
+   "best_season": "winter",
+   "rank": 23,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "taxus-cuspidata",
+   "latin": "Taxus cuspidata",
+   "ja": "一位（伽羅木）",
+   "ja_reading": "イチイ (ichii); キャラボク (kyaraboku) = var. nana",
+   "zh": "东北红豆杉（日本红豆杉）",
+   "zht": "東北紅豆杉（日本紅豆杉）",
+   "en": "Japanese yew",
+   "category": "conifer",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND: 一位 in ZH means 'first place / one person'; 伽羅木 means nothing botanical. ZH is 东北红豆杉 (Taiwan/HK usage 日本紅豆杉). キャラボク (dwarf spreading form) = 矮紫杉 / 伽罗木 only inside bonsai circles.",
+   "best_season": "winter",
+   "rank": 24,
+   "trade": {
+    "CN": {
+     "status": "cites",
+     "note_staff": "CITES: Taxus cuspidata is CITES Appendix II (since 2005) → Japanese export permit + Chinese CITES import permit; Taxus is also a China Class-I protected genus — expect extra domestic paperwork. Show a 「需 CITES 许可」 notice.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "styphnolobium-japonicum",
+   "latin": "Styphnolobium japonicum",
+   "ja": "槐",
+   "ja_reading": "エンジュ (enju)",
+   "zh": "槐（国槐）",
+   "zht": "槐（國槐）",
+   "en": "Japanese pagoda tree",
+   "category": "deciduous",
+   "false_friend": false,
+   "kanji_note": "Same character, same plant; buyers say 国槐 or 槐树. Do not confuse with 刺槐 (Robinia, black locust). JA 犬槐 (inu-enju) is Maackia amurensis = 朝鲜槐, a different species.",
+   "best_season": "summer",
+   "rank": 25,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Styphnolobium japonicum (syn. Sophora japonica)"
+  },
+  {
+   "id": "lagerstroemia-indica",
+   "latin": "Lagerstroemia indica",
+   "ja": "百日紅",
+   "ja_reading": "サルスベリ (sarusuberi)",
+   "zh": "紫薇（百日红）",
+   "zht": "紫薇（百日紅）",
+   "en": "Crape myrtle",
+   "category": "flowering",
+   "false_friend": false,
+   "kanji_note": "Same plant; 百日红 is a recognised ZH alias but the primary name buyers use is 紫薇. Show 紫薇 first, 百日红 in brackets; glyph 紅→红 in Simplified.",
+   "best_season": "summer",
+   "rank": 26,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "gardenia-jasminoides",
+   "latin": "Gardenia jasminoides",
+   "ja": "梔子",
+   "ja_reading": "クチナシ (kuchinashi)",
+   "zh": "栀子（栀子花）",
+   "zht": "梔子（梔子花）",
+   "en": "Cape jasmine (gardenia)",
+   "category": "flowering",
+   "false_friend": false,
+   "kanji_note": "Same plant; the JA form equals the Traditional form 梔子, Simplified needs 栀子. Buyers say 栀子花. Double-flowered garden forms are cultivars.",
+   "best_season": "summer",
+   "rank": 27,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "osmanthus-heterophyllus",
+   "latin": "Osmanthus heterophyllus",
+   "ja": "柊",
+   "ja_reading": "ヒイラギ (hiiragi)",
+   "zh": "柊树",
+   "zht": "柊樹",
+   "en": "Holly osmanthus (false holly)",
+   "category": "evergreen",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (rare in ZH): 柊 (zhōng) is unknown to Chinese buyers; Flora of China's 柊树 exists but needs the Latin and a hint 木犀科 beside it. Do not translate as 冬青 (ZH 冬青 = Ilex, true holly); JA 西洋柊 (Ilex aquifolium) and 柊木犀 (Osmanthus × fortunei) are different plants.",
+   "best_season": "summer",
+   "rank": 28,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "ternstroemia-gymnanthera",
+   "latin": "Ternstroemia gymnanthera",
+   "ja": "木斛",
+   "ja_reading": "モッコク (mokkoku)",
+   "zh": "厚皮香",
+   "zht": "厚皮香",
+   "en": "Japanese ternstroemia (mokkoku)",
+   "category": "evergreen",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (unreadable): 木斛 means nothing in ZH (斛 is an old grain measure). ZH is 厚皮香. Called 庭木の王 in Japan — a prestige item Chinese buyers do not know by name, so lead with the photo + Latin + 厚皮香.",
+   "best_season": "summer",
+   "rank": 29,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: no CN prohibition found, no protocol; permit + phytosanitary + soil-free; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  },
+  {
+   "id": "quercus-serrata",
+   "latin": "Quercus serrata",
+   "ja": "楢",
+   "ja_reading": "ナラ (nara); コナラ (konara), ミズナラ",
+   "zh": "枹栎",
+   "zht": "枹櫟",
+   "en": "Konara oak (jolcham oak)",
+   "category": "deciduous",
+   "false_friend": true,
+   "kanji_note": "FALSE FRIEND (rare in ZH): 楢 (yóu) is an archaic character no buyer reads. ZH is 枹栎 for コナラ, 蒙古栎 / 水楢 unknown. Sold in Kanto as 雑木 (zōki) style; keep species-level.",
+   "best_season": "summer",
+   "rank": 30,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: as 樫 (Quercus — oak-wilt scrutiny, no protocol); confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Quercus serrata (ミズナラ = Q. crispula, 蒙古栎)"
+  },
+  {
+   "id": "phyllostachys",
+   "latin": "Phyllostachys spp.",
+   "ja": "竹",
+   "ja_reading": "タケ (take); モウソウチク, マダケ, クロチク",
+   "zh": "竹",
+   "zht": "竹",
+   "en": "Bamboo (Phyllostachys)",
+   "category": "other",
+   "false_friend": false,
+   "kanji_note": "Same character, same meaning. Species-level traps: JA 黒竹 (kurochiku) is ZH 紫竹 (P. nigra), JA 真竹 (madake) is ZH 桂竹; モウソウチク = 毛竹 matches. Genus-level row; add species when the garden knows it.",
+   "best_season": "summer",
+   "rank": 31,
+   "trade": {
+    "CN": {
+     "status": "permit_required",
+     "note_staff": "CASE-BY-CASE: live culms with rhizome need a CN import permit and soil-free handling; no prohibition found, no protocol; confirm per deal.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": "Phyllostachys spp. (P. edulis 毛竹, P. reticulata 桂竹, P. nigra 紫竹)"
+  },
+  {
+   "id": "cycas-revoluta",
+   "latin": "Cycas revoluta",
+   "ja": "蘇鉄",
+   "ja_reading": "ソテツ (sotetsu)",
+   "zh": "苏铁（铁树）",
+   "zht": "蘇鐵（鐵樹）",
+   "en": "Japanese sago palm (sago cycad)",
+   "category": "other",
+   "false_friend": false,
+   "kanji_note": "Same plant; glyphs differ (JA 鉄 shinjitai vs ZH 铁 / 鐵). Buyers say 铁树 or 苏铁. Traditional readers read 蘇鉄 easily; Simplified UI must show 苏铁.",
+   "best_season": "summer",
+   "rank": 32,
+   "trade": {
+    "CN": {
+     "status": "cites",
+     "note_staff": "CITES: all Cycadaceae are CITES Appendix II → Japanese export permit + Chinese CITES import permit; show a 「需 CITES 许可」 notice.",
+     "verified_at": "2026-10"
+    }
+   },
+   "knowledge": null,
+   "latin_note": null
+  }
+ ]
+}

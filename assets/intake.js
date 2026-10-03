@@ -125,7 +125,7 @@
       if (!r) return;
       if (r.status === 422) { var m = { species_id: '樹種', height_cm: '樹高', width_cm: '枝張り', photo: '写真（最低1枚）' }; msg('まだ足りません：' + r.data.missing.map(function (k) { return m[k] || k; }).join(' · '), true); return; }
       if (r.status >= 300) { msg(r.data.error || '提出できませんでした', true); return; }
-      state.tree = r.data.tree; fillForm(state.tree); loadTrees(); msg('提出しました。スタッフが審査します。編集すると下書きに戻ります。');
+      var keep = state.media; state.tree = r.data.tree; fillForm(state.tree); state.media = keep; renderShots(); loadTrees(); msg('提出しました。スタッフが審査します。編集すると下書きに戻ります。');
     }).catch(function () { });
   });
 

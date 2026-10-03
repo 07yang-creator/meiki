@@ -1,6 +1,6 @@
 # 名木 Mei — prestige Japanese garden trees · exhibition & inquiry
 
-`mei.rakusalab.com` · the isolated sibling of Rakusalab (same paid resources, no shared code).
+`meiki.rakusalab.com` · the isolated sibling of Rakusalab (same paid resources, no shared code).
 Spec: `docs/MEI_TREE_GALLERY_PLAN.md` in the Rakusalab repo (v1.2) and `MEI_SPECIES_SEED.md`; a copy lands in `docs/` here with the next slice.
 
 > Repository `07yang-creator/meiki` (moved here from the Rakusalab working tree on 2026-10-03 with its

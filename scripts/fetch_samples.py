@@ -21,7 +21,7 @@ import urllib.request
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT = os.path.join(ROOT, 'data', 'samples')
 API = 'https://commons.wikimedia.org/w/api.php'
-UA = 'mei-sample-fetcher/0.1 (+https://mei.rakusalab.com; design preview placeholders)'
+UA = 'mei-sample-fetcher/0.1 (+https://meiki.rakusalab.com; design preview placeholders)'
 FREE = re.compile(r'(public domain|cc0|pd-)', re.I)
 
 QUERIES = {  # species id → search phrase; season words nudge the picker toward the 見頃

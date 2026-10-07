@@ -71,8 +71,8 @@ Everything below is a one-time setting; nothing in the code changes. Until it is
 **D · Check (~2 min)**
 
 7. `https://meiki.rakusalab.com/api/mei?action=health` → `"db": true`.
-8. `https://meiki.rakusalab.com/login/` → the admin lands on 审 (`/desk/`), the supplier on 入 (`/in/`).
-9. `https://meiki.rakusalab.com/?edit=1` → log in as staff/admin → 「替换照片」 on every sample photo.
+8. `https://meiki.rakusalab.com/login/` → the admin lands on 審 (`/desk/`), the supplier on 入 (`/in/`).
+9. `https://meiki.rakusalab.com/?edit=1` → log in as staff/admin → 「替換照片」 on every sample photo.
 
 Later: `MEI_GEMINI_API_KEY`, `RESEND_API_KEY` (AI assists, mail). Before any China-facing launch, replace the Google Fonts
 `<link>` (marked DEV ONLY) with self-hosted subsets (plan §8).
@@ -81,8 +81,12 @@ Later: `MEI_GEMINI_API_KEY`, `RESEND_API_KEY` (AI assists, mail). Before any Chi
 
 - **Chinese is Traditional (繁體) everywhere** since ruling 17 (2026-10-07): pages carry `lang="zh-Hant"`; new UI strings are
   written in 繁體 directly; `scripts/to_hant.py <files…>` converts anything that arrives Simplified (OpenCC + the vocabulary
-  table; Japanese text is left alone). `species.zh` is 繁體, `species.zhs` keeps the Simplified name for searches. The
-  typefaces stay as they are (owner's call) — note the brush face lacks most Traditional-only glyphs.
+  table; Japanese text is left alone). `species.zh` is 繁體, `species.zhs` keeps the Simplified name for searches.
+- **Chinese faces carry the full 繁體 set** (owner, 2026-10-07: 消除字體不一致): titles LXGW WenKai TC, serif Noto Serif TC,
+  the TC sans stack. The brush (Ma Shan Zheng) lacks most Traditional-only glyphs, so it draws only the 名木 wordmark and
+  the season kanji. Every page's font `<link>` requests the TC faces; `tests/test_pages.py` locks all of it.
+- **Commit as `Yano`** (`git config user.name Yano`, the checkout already does). Vercel creates and then *cancels*, with no
+  build, every push whose commit author name is `07yang-creator`; pushes authored Yano or claude build in ~10 s.
 
 - Species names are per-language columns joined by the Latin binomial; never map kanji to Chinese.
 - The paper is always paper; season colours in five places; gold = signature; red = the seal.

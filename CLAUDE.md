@@ -27,7 +27,10 @@ Nothing Google-hosted on a public page: the audience is in mainland China.
 - Provenance is the constant 關東名園出品 / 関東の名園出品 / From a distinguished Kantō garden.
 - **Chinese is Traditional (繁體) everywhere** (ruling 17, 2026-10-07; `lang="zh-Hant"`). Write new strings in 繁體;
   `scripts/to_hant.py` converts anything that arrives Simplified without touching Japanese. `species.zh` is 繁體,
-  `species.zhs` keeps the Simplified name. Typefaces unchanged by the owner's call.
+  `species.zhs` keeps the Simplified name.
+- **Chinese faces carry the full 繁體 glyph set** (owner, 2026-10-07: 消除字體不一致). Titles (`--f-dzh`) are LXGW WenKai TC,
+  the Chinese serif is Noto Serif TC, the sans stack is the TC one. The brush (Ma Shan Zheng, Simplified-only) draws only
+  the 名木 wordmark and the season kanji 春夏秋冬 — never a title. `tests/test_pages.py` locks this.
 
 ## Auth (when writes arrive)
 Every write re-validates a Supabase JWT against `/auth/v1/user` on the server; roles from `mei.members`;

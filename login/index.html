@@ -13,8 +13,8 @@
 <body>
 <div class="wrap" style="max-width: 520px">
   <header class="hdr">
-    <a class="brand" href="../" aria-label="名木 Mei 首页"><span class="seal">名木</span><span class="brush">名木</span></a>
-    <nav><a href="../">展</a><a href="../in/">入</a><a href="../desk/">审</a></nav>
+    <a class="brand" href="../" aria-label="名木 Mei 首頁"><span class="seal">名木</span><span class="brush">名木</span></a>
+    <nav><a href="../">展</a><a href="../in/">入</a><a href="../desk/">審</a></nav>
   </header>
   <main id="gate" style="padding-top: 28px"></main>
   <p id="after" class="muted" style="font-size: 13px; padding-top: 16px"></p>
@@ -32,7 +32,7 @@
     if (r.status === 503) { gate.innerHTML = '<p class="muted">データベースが未接続です（環境変数）。</p>'; return; }
     if (r.status >= 300) { gate.innerHTML = '<p class="muted">' + (r.data.error || 'エラー') + '</p>'; return; }
     var role = r.data.member.role;
-    var dest = rt || (role === 'supplier' ? '../in/' : '../desk/');   // supplier → 入 · staff/admin → 审
+    var dest = rt || (role === 'supplier' ? '../in/' : '../desk/');   // supplier → 入 · staff/admin → 審
     document.getElementById('after').innerHTML = 'ログインしました（' + role + '）。 <a href="' + dest.replace(/"/g, '') + '">続ける →</a>';
     location.replace(dest);   // the ONE redirect: already-authed on /login → returnTo (same-origin path) or the role's home
   }).catch(function (e) { gate.innerHTML = '<p class="muted">' + e.message + '</p>'; });

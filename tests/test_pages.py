@@ -89,16 +89,66 @@ def test_no_google_assets_except_dev_fonts_and_supabase_cdn_only_in_auth():
     assert 'supabase-js@2' in auth
 
 
-SIMPLIFIED_ONLY = re.compile('[这为树种实际价询预约录发现关东园陆选学长经时让体对将认记录义变产标过兴见节观赏树龄爱]')
+SIMPLIFIED_ONLY = re.compile('[这为树种实际价询预约录发现关东园陆选学长经时让体对将认记录义变产标过兴见节观赏树龄爱页审订线阅维链]')
+# the same set without the three characters Japanese shinjitai shares (体 学 将): safe on a lang="ja" page
+SIMPLIFIED_NOT_JAPANESE = re.compile('[这为树种实际价询预约录发现关东园陆选长经时让对认记录义变产标过兴见节观赏树龄爱页审订线阅维链]')
 
 
 def test_chinese_ui_is_traditional():
-    """Ruling 17 (2026-10-07): 全部使用繁體字. Simplified-only characters may not appear in any Chinese UI string."""
+    """Ruling 17 (2026-10-07): 全部使用繁體字. Simplified-only characters may not appear in any Chinese UI string —
+    text, attributes (aria-label, onsubmit) and script literals alike."""
     for rel in ('index.html', 't/index.html', 'journey/index.html', 'desk/index.html'):
         html = read(os.path.join(ROOT, rel))
         body = re.sub(r'<!--.*?-->', '', html, flags=re.S)
         assert not SIMPLIFIED_ONLY.search(body), f"{rel}: {SIMPLIFIED_ONLY.search(body).group(0)}"
-    for rel in ('assets/mei.js', 'assets/desk.js', 'assets/edit.js'):
+    for rel in ('legal/index.html', 'login/index.html', 'in/index.html'):
+        html = read(os.path.join(ROOT, rel))
+        body = re.sub(r'<!--.*?-->', '', html, flags=re.S)
+        assert not SIMPLIFIED_NOT_JAPANESE.search(body), f"{rel}: {SIMPLIFIED_NOT_JAPANESE.search(body).group(0)}"
+    for rel in ('assets/mei.js', 'assets/desk.js', 'assets/edit.js', 'assets/qr.js'):
         js = read(os.path.join(ROOT, rel))
         strings = ''.join(re.findall(r"'((?:[^'\\\n]|\\.)*)'", js))
         assert not SIMPLIFIED_ONLY.search(strings), f"{rel}: {SIMPLIFIED_ONLY.search(strings).group(0)}"
+
+
+def font_families(html):
+    link = re.search(r'fonts\.googleapis\.com/css2\?([^"]*)"', html)
+    return set(re.findall(r'family=([^:&]+)', link.group(1))) if link else set()
+
+
+def test_chinese_faces_carry_the_traditional_glyph_set():
+    """Owner, 2026-10-07: 消除字體不一致. Ma Shan Zheng (the brush) has no glyphs for most Traditional-only characters,
+    so a 繁體 title set in it rendered half brush, half fallback serif. Every Chinese face is now a TC face; the brush
+    keeps only the wordmark and the season kanji (see the test below)."""
+    css = read(os.path.join(ROOT, 'assets', 'mei.css'))
+    assert re.search(r'--f-dzh:\s*"LXGW WenKai TC", "Noto Serif TC"', css), 'Chinese titles: 楷 with the full 繁體 set'
+    assert re.search(r'--f-serif:\s*"Noto Serif TC"', css), 'Chinese serif: TC'
+    assert re.search(r'--f-brush:\s*"Ma Shan Zheng", "LXGW WenKai TC"', css), 'the brush falls back to the same 楷, never a serif'
+    assert re.search(r'--f-sans:[^;]*"PingFang TC"', css) and 'Noto Sans CJK TC' in css
+    assert '.text p:lang(ja)' in css, 'a Japanese paragraph in the tree text keeps the JP serif (the .text p rule outranks :lang(ja))'
+    for face in ('Noto Serif SC', 'PingFang SC', 'Noto Sans CJK SC', 'Microsoft YaHei'):
+        assert face not in css, face
+    renders_titles = {'index.html', 't/index.html', 'journey/index.html', 'desk/index.html'}   # class="dzh" or mei.js / desk.js
+    for p in PAGES:
+        rel = os.path.relpath(p, ROOT)
+        html = read(p)
+        fams = font_families(html)
+        assert not fams & {'Noto+Serif+SC', 'ZCOOL+XiaoWei'}, f'{rel}: Simplified-only faces requested: {fams}'
+        if rel in renders_titles:
+            assert {'LXGW+WenKai+TC', 'Noto+Serif+TC'} <= fams, f'{rel}: {fams}'
+        if 'class="brush' in html:
+            assert 'Ma+Shan+Zheng' in fams, f'{rel}: the wordmark needs the brush'
+
+
+BRUSH_GLYPHS = set('名木春夏秋冬')
+
+
+def test_the_brush_only_draws_glyphs_it_has():
+    """The brush face covers GB 2312 only. Whatever sits in a .brush span must be the wordmark or a season kanji."""
+    for p in PAGES:
+        for inner in re.findall(r'class="brush[^"]*"[^>]*>([^<]*)<', read(p)):
+            assert set(inner.strip()) <= BRUSH_GLYPHS, f'{os.path.relpath(p, ROOT)}: {inner!r}'
+    js = read(os.path.join(ROOT, 'assets', 'mei.js'))
+    for expr in re.findall(r'class="brush[^"]*"[^>]*>\' \+ ([A-Za-z_.\[\]]+)', js):
+        assert expr.endswith('.kanji'), f'a .brush span renders {expr}, not a season kanji'
+    assert set(re.findall(r"kanji: '(.)'", js)) <= BRUSH_GLYPHS

@@ -23,13 +23,16 @@
 
   --r-0: 0; --r-1: 6px; --r-2: 12px; --r-3: 20px; --r-pill: 999px;
 
-  --f-sans: system-ui, "PingFang SC", "Hiragino Sans", "Microsoft YaHei", "Noto Sans CJK SC", sans-serif;
+  /* Chinese is 繁體 everywhere (ruling 17). Every Chinese face below must carry the Traditional glyph set, or a
+     title renders half brush, half serif — the owner's 2026-10-07 call: 消除字體不一致. The brush (Ma Shan Zheng,
+     Simplified-only) keeps just two jobs whose glyphs it has: the 名木 wordmark and the season kanji 春夏秋冬. */
+  --f-sans: system-ui, "PingFang TC", "Hiragino Sans", "Microsoft JhengHei", "Noto Sans CJK TC", sans-serif;
   --f-sans-ja: system-ui, "Hiragino Sans", "Yu Gothic", "Noto Sans CJK JP", sans-serif;
-  --f-serif: "Noto Serif SC", "Noto Serif JP", serif;
+  --f-serif: "Noto Serif TC", "Noto Serif JP", serif;
   --f-serif-ja: "Noto Serif JP", serif;
-  --f-dzh: "Ma Shan Zheng", "Noto Serif SC", serif;      /* the brush of the 名木 wordmark carries every Chinese title (owner, 2026-10-03) */
+  --f-dzh: "LXGW WenKai TC", "Noto Serif TC", serif;      /* 楷 with the full 繁體 set carries every Chinese title (owner, 2026-10-07) */
   --f-dja: "Shippori Mincho B1", "Noto Serif JP", serif;
-  --f-brush: "Ma Shan Zheng", "Noto Serif SC", serif;
+  --f-brush: "Ma Shan Zheng", "LXGW WenKai TC", "Noto Serif TC", serif;
   --f-latin: "Cormorant Garamond", Georgia, serif;
 
   --gutter: 16px;
@@ -198,6 +201,7 @@ button { cursor: pointer; }
 .tree-name .vert { font-family: var(--f-dja); font-size: 17px; letter-spacing: 0.22em; color: var(--muted); border-left: 1px solid var(--hairline); padding-left: 10px; justify-self: end; margin-top: 22px; }
 .text h2 { font-family: var(--f-dzh); font-size: 24px; font-weight: 400; line-height: 1.45; letter-spacing: 0.02em; }
 .text p { font-family: var(--f-serif); font-size: 16px; line-height: 1.9; }
+.text p:lang(ja), .knowledge .intro:lang(ja) { font-family: var(--f-serif-ja); }   /* the 原文 paragraph: JP serif, not TC-with-fallbacks */
 .knowledge { display: flex; flex-direction: column; gap: 12px; }
 .knowledge .intro { font-family: var(--f-serif); font-size: 15px; line-height: 1.9; }
 .knowledge dl { display: flex; flex-direction: column; gap: 10px; }

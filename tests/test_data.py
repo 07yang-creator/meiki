@@ -21,9 +21,12 @@ TREES = load('trees.json')['trees']
 BY_ID = {s['id']: s for s in SPECIES}
 SEASONS = {'spring', 'summer', 'autumn', 'winter'}
 TRADE = {'prohibited', 'no_condition', 'protocol', 'permit_required', 'cites', 'unknown'}
-# Japanese-only kanji / glyph forms that must never appear in a Chinese name (plan §6 leak table)
-JA_LEAK = re.compile('[黒桜樹齢歳鉢検鉄犀楓槇槙欅樫椿躑躅楢檜]')   # 榧 · 柊 are legitimate ZH characters (日本榧树 · 柊树)
-GARDEN_WORDS = re.compile('(園|庭園|氏|先生|吉岡|農場)')
+# Japanese-only kanji / shinjitai that must never appear in a Chinese name (plan §6 leak table). Since ruling 17 the Chinese
+# is Traditional, so 樹 · 楓 · 檜 · 鉢 · 犀 · 榧 · 柊 are legitimate; the shinjitai forms (黒 桜 齢 歳 検 鉄) and the Japanese-only
+# tree words (槇 槙 欅 樫 椿 躑躅 楢) still are not.
+JA_LEAK = re.compile('[黒桜齢歳検鉄槇槙欅樫椿躑躅楢]')
+SIMPLIFIED = re.compile('[这为树种实际价询预约录发现关东园陆学长经时让体对将认记义变产标过兴见节观赏爱红枫鸡]')
+GARDEN_WORDS = re.compile('(氏|先生|吉岡|農場|園(?![方中主之內外林藝的]))')   # a NAMED garden; 園方 · 園中 · 園主 are generic (繁體 since ruling 17)
 
 
 def test_latin_is_unique_join_key():
@@ -45,6 +48,8 @@ def test_chinese_names_carry_no_japanese_glyphs():
     for s in SPECIES:
         zh = s['zh'].replace('真柏', '')
         assert not JA_LEAK.search(zh), f"{s['id']}: ZH name {s['zh']} carries a Japanese form"
+        assert not SIMPLIFIED.search(s['zh']), f"{s['id']}: ZH name {s['zh']} is Simplified (ruling 17: 繁體)"
+        assert s.get('zhs'), f"{s['id']}: the Simplified name is kept in zhs for mainland buyers' searches"
 
 
 def test_false_friends_are_flagged_as_data():
@@ -120,3 +125,5 @@ def test_every_species_has_an_intro_and_reading_links():
         assert links.get('baike', '').startswith('https://baike.baidu.com/item/'), s['id']
         # a Japanese term QUOTED in 「」 to explain it is fine; a Japanese glyph in running Chinese is a leak
         assert not JA_LEAK.search(re.sub('「[^」]*」', '', k['intro']).replace('真柏', '')), f"{s['id']}: the intro carries a Japanese glyph"
+        for key in ('intro', 'origin', 'character', 'culture', 'growth', 'care'):
+            assert not SIMPLIFIED.search(re.sub('「[^」]*」', '', k[key])), f"{s['id']}: knowledge.{key} is Simplified"

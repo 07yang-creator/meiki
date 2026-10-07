@@ -1,32 +1,32 @@
 /* mei.js — 名木 Mei public gallery runtime.
  * Data: GET api/mei?action=species|trees (the published REAL trees + the 20 samples, samples carrying replaced photos
  * from the public bucket); falls back to data/*.json when the API is unreachable (static preview). Renderers never
- * know which source fed them. Real trees (`real: true`) come first in every season; samples trail, tagged 示例.
+ * know which source fed them. Real trees (`real: true`) come first in every season; samples trail, tagged 範例.
  * Language: ?lang=zh|ja|en, remembered in localStorage('mei.lang'); zh is canonical, en optional per tree.
  * Season order: the current season first, then calendar order. Tree order inside a chapter:
  * real → tier (signature → collection → stock) → species.rank → sort_weight → published_at desc.
- * ?edit=1 (staff/admin): loads auth.js + edit.js and offers 「替换照片」 beside every sample photo (temporary).
+ * ?edit=1 (staff/admin): loads auth.js + edit.js and offers 「替換照片」 beside every sample photo (temporary).
  */
 (function () {
   'use strict';
   var SEASONS = ['spring', 'summer', 'autumn', 'winter'];
   var SEASON = {
     spring: { kanji: '春', zh: '春', ja: '春', en: 'Spring', months: '3–5月', verb: '看花', sub: { zh: '花の季', en: 'SPRING' } },
-    summer: { kanji: '夏', zh: '夏', ja: '夏', en: 'Summer', months: '6–8月', verb: '看绿', sub: { zh: '緑陰の季', en: 'SUMMER' } },
-    autumn: { kanji: '秋', zh: '秋', ja: '秋', en: 'Autumn', months: '9–11月', verb: '看叶', sub: { zh: '紅葉の季', en: 'AUTUMN' } },
+    summer: { kanji: '夏', zh: '夏', ja: '夏', en: 'Summer', months: '6–8月', verb: '看綠', sub: { zh: '緑陰の季', en: 'SUMMER' } },
+    autumn: { kanji: '秋', zh: '秋', ja: '秋', en: 'Autumn', months: '9–11月', verb: '看葉', sub: { zh: '紅葉の季', en: 'AUTUMN' } },
     winter: { kanji: '冬', zh: '冬', ja: '冬', en: 'Winter', months: '12–2月', verb: '看枝', sub: { zh: '常緑と枝の季', en: 'WINTER' } }
   };
-  var TIER = { signature: { zh: '铭品', ja: '銘品', en: 'SIGNATURE' }, collection: { zh: '名木', ja: '名木', en: 'COLLECTION' }, stock: { zh: '庭木', ja: '庭木', en: 'GARDEN STOCK' } };
+  var TIER = { signature: { zh: '銘品', ja: '銘品', en: 'SIGNATURE' }, collection: { zh: '名木', ja: '名木', en: 'COLLECTION' }, stock: { zh: '庭木', ja: '庭木', en: 'GARDEN STOCK' } };
   var TRADE = {
-    prohibited: { zh: '不可出口至中国大陆', ja: '中国本土への輸出不可', en: 'Not exportable to mainland China', sub: '中国进境植物检疫禁止进境物名录所列（松属 · 松材线虫）· 本株可在日本国内交付或出口至其他地区', short: '不可出口至中国大陆 · 仅限展示', arc: 'autumn' },
-    no_condition: { zh: '出口条件待确认', ja: '輸出条件は確認中', en: 'Export conditions not established', sub: '需由进口方向中国海关申请许可并确认检疫条件', short: '出口条件待确认', arc: 'gold' },
-    protocol: { zh: '出口条件待确认', ja: '輸出条件は確認中', en: 'Export conditions not established', sub: '日中议定书暂停中，需由进口方向中国海关确认', short: '出口条件待确认', arc: 'gold' },
-    cites: { zh: '可申请出口（需 CITES 许可 · 进口许可 · 去土 · 隔离检疫）', ja: '輸出可（CITES・輸入許可・土壌除去・隔離検疫が必要）', en: 'Exportable with CITES and import permits', sub: '华盛顿公约附录 II；由进口方申请许可；根球去土；入境后隔离', short: '需 CITES 许可', arc: 'summer' },
-    permit_required: { zh: '可申请出口（需进口许可 · 去土 · 隔离检疫）', ja: '輸出可（輸入許可・土壌除去・隔離検疫が必要）', en: 'Exportable with import permit', sub: '由进口方向中国海关申请许可；根球须去土或置换为合格介质；入境后在指定隔离场所隔离', short: '', arc: 'summer' },
-    unknown: { zh: '出口条件待确认', ja: '輸出条件は確認中', en: 'Export conditions not established', sub: '需由进口方确认', short: '出口条件待确认', arc: 'gold' }
+    prohibited: { zh: '不可出口至中國大陸', ja: '中国本土への輸出不可', en: 'Not exportable to mainland China', sub: '中國進境植物檢疫禁止進境物名錄所列（松屬 · 松材線蟲）· 本株可在日本國內交付或出口至其他地區', short: '不可出口至中國大陸 · 僅限展示', arc: 'autumn' },
+    no_condition: { zh: '出口條件待確認', ja: '輸出条件は確認中', en: 'Export conditions not established', sub: '需由進口方向中國海關申請許可並確認檢疫條件', short: '出口條件待確認', arc: 'gold' },
+    protocol: { zh: '出口條件待確認', ja: '輸出条件は確認中', en: 'Export conditions not established', sub: '日中議定書暫停中，需由進口方向中國海關確認', short: '出口條件待確認', arc: 'gold' },
+    cites: { zh: '可申請出口（需 CITES 許可 · 進口許可 · 去土 · 隔離檢疫）', ja: '輸出可（CITES・輸入許可・土壌除去・隔離検疫が必要）', en: 'Exportable with CITES and import permits', sub: '華盛頓公約附錄 II；由進口方申請許可；根球去土；入境後隔離', short: '需 CITES 許可', arc: 'summer' },
+    permit_required: { zh: '可申請出口（需進口許可 · 去土 · 隔離檢疫）', ja: '輸出可（輸入許可・土壌除去・隔離検疫が必要）', en: 'Exportable with import permit', sub: '由進口方向中國海關申請許可；根球須去土或置換為合格介質；入境後在指定隔離場所隔離', short: '', arc: 'summer' },
+    unknown: { zh: '出口條件待確認', ja: '輸出条件は確認中', en: 'Export conditions not established', sub: '需由進口方確認', short: '出口條件待確認', arc: 'gold' }
   };
-  var FIXED_TRADE = '以上为植物检疫一般信息，不构成法律意见；具体以中国海关及日本植物防疫所的现行规定为准。';
-  var PROVENANCE = { zh: '关东名园出品', ja: '関東の名園出品', en: 'From a distinguished Kantō garden' };
+  var FIXED_TRADE = '以上為植物檢疫一般資訊，不構成法律意見；具體以中國海關及日本植物防疫所的現行規定為準。';
+  var PROVENANCE = { zh: '關東名園出品', ja: '関東の名園出品', en: 'From a distinguished Kantō garden' };
   // 二十四節気 — month/day boundaries (±1 day by year; display only)
   var TERMS = [[1, 5, '小寒'], [1, 20, '大寒'], [2, 4, '立春'], [2, 18, '雨水'], [3, 5, '啓蟄'], [3, 20, '春分'], [4, 5, '清明'], [4, 20, '穀雨'], [5, 5, '立夏'], [5, 21, '小満'], [6, 5, '芒種'], [6, 21, '夏至'], [7, 7, '小暑'], [7, 22, '大暑'], [8, 7, '立秋'], [8, 23, '処暑'], [9, 7, '白露'], [9, 23, '秋分'], [10, 8, '寒露'], [10, 23, '霜降'], [11, 7, '立冬'], [11, 22, '小雪'], [12, 7, '大雪'], [12, 22, '冬至']];
 
@@ -169,7 +169,7 @@
   }
   var SHOTS = { 1: '①正面', 2: '②正面横', 3: '③¾左', 4: '④¾右', 5: '⑤背面', 6: '⑥根元', 7: '⑦幹周', 8: '⑧枝ぶり', 9: '⑨状態', 10: '⑩比例' };
   function shotLabel(n) { return SHOTS[n] || ('' + n); }
-  function sampleTag(t) { return t.sample ? '<span class="pill tag">示例</span>' : ''; }
+  function sampleTag(t) { return t.sample ? '<span class="pill tag">範例</span>' : ''; }
 
   // ---- renderers ----
   function tradeCard(t, lang) {
@@ -178,10 +178,10 @@
       '<span class="lbl">出口 · 輸出 · EXPORT</span>' +
       '<p class="zh">' + esc(k.zh) + '</p>' +
       '<p class="sub" lang="ja">' + esc(k.ja) + ' · <span class="en">' + esc(k.en) + '</span></p>' +
-      '<p class="fixed">' + esc(k.sub) + '。' + FIXED_TRADE + ' <span class="num">最后核对 ' + esc(t.trade.verified_at || '—') + '</span></p></section>';
+      '<p class="fixed">' + esc(k.sub) + '。' + FIXED_TRADE + ' <span class="num">最後核對 ' + esc(t.trade.verified_at || '—') + '</span></p></section>';
   }
   function tradeShort(t) { var k = TRADE[t.trade.status] || TRADE.unknown; return k.short ? '<span class="warn">' + esc(k.short) + '</span>' : ''; }
-  function ageLine(t) { return t.measures.age_years_est ? '推定约 ' + t.measures.age_years_est + ' 年' : '树龄待记'; }
+  function ageLine(t) { return t.measures.age_years_est ? '推定約 ' + t.measures.age_years_est + ' 年' : '樹齡待記'; }
 
   function treeCard(t, lang) {
     var sp = t.sp || {};
@@ -208,7 +208,7 @@
   function rowItem(t, small) {
     var sp = t.sp || {};
     return '<a class="rowl' + (small ? ' small' : '') + ' reveal" href="' + treeHref(t) + '"><div class="ph">' + photo(t, 1, { w: 56, h: 56, cap: '' }) + '</div>' +
-      '<div class="stack"><span class="' + (small ? '' : 'dzh') + '" style="font-size:' + (small ? 13 : 15) + 'px">' + esc(speciesName(sp, 'zh')) + (name(t, 'zh') ? ' ·「' + esc(name(t, 'zh')) + '」' : '') + ' <span class="ja" lang="ja" style="font-size:11px;color:var(--muted)">' + esc(speciesName(sp, 'ja')) + '</span>' + (t.sample ? ' <span class="muted" style="font-size:10px">示例</span>' : '') + '</span>' +
+      '<div class="stack"><span class="' + (small ? '' : 'dzh') + '" style="font-size:' + (small ? 13 : 15) + 'px">' + esc(speciesName(sp, 'zh')) + (name(t, 'zh') ? ' ·「' + esc(name(t, 'zh')) + '」' : '') + ' <span class="ja" lang="ja" style="font-size:11px;color:var(--muted)">' + esc(speciesName(sp, 'ja')) + '</span>' + (t.sample ? ' <span class="muted" style="font-size:10px">範例</span>' : '') + '</span>' +
       (small ? '' : (tradeShort(t) ? '<span class="muted" style="font-size:11px">' + esc((TRADE[t.trade.status] || TRADE.unknown).short) + '</span>' : '<span class="latin" style="font-size:12px;color:var(--muted)">' + esc(sp.latin || '') + '</span>')) + '</div>' +
       '<span class="num muted" style="font-size:11px">H ' + m(t.measures.height_cm) + (small ? ' · W ' + m(t.measures.width_cm) : '') + ' · ' + esc(String(t.catalog_no).slice(-3)) + '</span></a>';
   }
@@ -227,7 +227,7 @@
     if (Q.get('sold') === '1') return renderSold(root, data, lang);
     var html = '';
     html += '<nav class="season-nav" aria-label="四季">' + SEASONS.map(function (s) {
-      return '<a href="#' + s + '" class="s-' + s + (s === current ? ' on' : '') + '">' + SEASON[s].kanji + '<small>' + (s === current ? '当季' : SEASON[s].months) + '</small></a>';
+      return '<a href="#' + s + '" class="s-' + s + (s === current ? ' on' : '') + '">' + SEASON[s].kanji + '<small>' + (s === current ? '當季' : SEASON[s].months) + '</small></a>';
     }).join('') + '</nav>';
     order.forEach(function (s, idx) {
       var inSeason = sortTrees(published.filter(function (t) { return t.season === s && t.tier !== 'stock'; }));
@@ -255,7 +255,7 @@
     var stock = sortTrees(published.filter(function (t) { return t.tier === 'stock'; }));
     if (stock.length) {
       html += '<div style="margin-top:36px">' + ORN.lace('#1C1A17') + '</div><section style="margin-top:16px;display:flex;flex-direction:column;gap:10px">' +
-        '<div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">' + TIER.stock.zh + ' · ' + TIER.stock.en + '</span><span class="muted" style="font-size:11px">按树种 · ' + stock.length + ' 株</span></div>' +
+        '<div style="display:flex;justify-content:space-between;align-items:baseline"><span class="lbl">' + TIER.stock.zh + ' · ' + TIER.stock.en + '</span><span class="muted" style="font-size:11px">按樹種 · ' + stock.length + ' 株</span></div>' +
         '<div class="stack">' + stock.map(function (t) { return rowItem(t, true); }).join('') + '</div></section>';
     }
     root.innerHTML = html;
@@ -264,43 +264,43 @@
 
   function renderSpeciesPage(root, data, lang, sid) {
     var sp = data.species[sid];
-    if (!sp) { root.innerHTML = '<p class="muted" style="padding:40px 0">未找到这个树种。<a href="' + BASE + '">回到展厅 →</a></p>'; return; }
+    if (!sp) { root.innerHTML = '<p class="muted" style="padding:40px 0">未找到這個樹種。<a href="' + BASE + '">回到展廳 →</a></p>'; return; }
     var list = sortTrees(data.trees.filter(function (t) { return t.species === sid && t.status === 'published'; }));
     var col = seasonColor(sp.best_season);
     document.title = shortZh(sp) + ' · 名木 Mei';
-    root.innerHTML = '<section class="stack s-' + sp.best_season + '" style="gap:8px;padding-top:8px"><p style="font-size:13px"><a href="' + BASE + (EDIT ? '?edit=1' : '') + '">← 四季展厅</a></p>' +
+    root.innerHTML = '<section class="stack s-' + sp.best_season + '" style="gap:8px;padding-top:8px"><p style="font-size:13px"><a href="' + BASE + (EDIT ? '?edit=1' : '') + '">← 四季展廳</a></p>' +
       '<h1 class="dzh" style="font-size:30px;font-weight:400;line-height:1.3">' + esc(shortZh(sp)) + ' <span class="dja" lang="ja" style="font-size:16px;color:var(--muted)">' + esc(speciesName(sp, 'ja')) + '</span></h1>' +
       '<p class="latin" style="font-size:16px;color:var(--muted)">' + esc(sp.latin) + ' <span class="en" style="font-style:normal">· ' + esc(sp.en) + '</span></p>' +
-      '<p class="muted" style="font-size:12px">見頃 <span style="color:var(--season)">' + SEASON[sp.best_season].kanji + '</span> · ' + SEASON[sp.best_season].months + ' · 在馆 ' + list.length + ' 株</p></section>' +
+      '<p class="muted" style="font-size:12px">見頃 <span style="color:var(--season)">' + SEASON[sp.best_season].kanji + '</span> · ' + SEASON[sp.best_season].months + ' · 在館 ' + list.length + ' 株</p></section>' +
       '<div style="margin-top:18px">' + ORN.lace(col) + '</div>' +
-      (list.length ? '<div class="grid2" style="margin-top:18px">' + list.map(function (t) { return treeCard(t, lang); }).join('') + '</div>' : '<p class="muted" style="margin-top:18px;font-size:14px">暂无在展之株。<a href="' + BASE + 'find/">委托我们寻找 →</a></p>') +
+      (list.length ? '<div class="grid2" style="margin-top:18px">' + list.map(function (t) { return treeCard(t, lang); }).join('') + '</div>' : '<p class="muted" style="margin-top:18px;font-size:14px">暫無在展之株。<a href="' + BASE + 'find/">委託我們尋找 →</a></p>') +
       knowledge(sp, true);
     reveal(root);
   }
   function renderSold(root, data, lang) {
     var list = sortTrees(data.trees.filter(function (t) { return t.status === 'sold' && t.show_when_sold !== false; }));
-    document.title = '成交实绩 · 名木 Mei';
-    root.innerHTML = '<section class="stack" style="gap:8px;padding-top:8px"><p style="font-size:13px"><a href="' + BASE + '">← 四季展厅</a></p><h1 class="dzh" style="font-size:30px;font-weight:400">成交实绩 <span class="dja" lang="ja" style="font-size:16px;color:var(--muted)">成約実績</span></h1></section>' +
+    document.title = '成交實績 · 名木 Mei';
+    root.innerHTML = '<section class="stack" style="gap:8px;padding-top:8px"><p style="font-size:13px"><a href="' + BASE + '">← 四季展廳</a></p><h1 class="dzh" style="font-size:30px;font-weight:400">成交實績 <span class="dja" lang="ja" style="font-size:16px;color:var(--muted)">成約実績</span></h1></section>' +
       '<div style="margin-top:18px">' + ORN.lace('#1C1A17') + '</div>' +
-      (list.length ? '<div class="stack" style="margin-top:12px">' + list.map(function (t) { return rowItem(t, false); }).join('') + '</div>' : '<p class="muted" style="margin-top:18px;font-size:14px">成交记录将在首批交付后公开。<a href="' + BASE + 'find/">委托我们寻木 →</a></p>');
+      (list.length ? '<div class="stack" style="margin-top:12px">' + list.map(function (t) { return rowItem(t, false); }).join('') + '</div>' : '<p class="muted" style="margin-top:18px;font-size:14px">成交記錄將在首批交付後公開。<a href="' + BASE + 'find/">委託我們尋木 →</a></p>');
     reveal(root);
   }
 
   function plaque(t, lang) {
     var sp = t.sp || {}, S = SEASON[t.season];
     var rows = [
-      ['推定树龄', t.measures.age_years_est ? '<span class="num">约 ' + t.measures.age_years_est + ' 年<span style="font-size:11px;color:var(--muted)">（推定）</span></span>' : '<span class="muted">待记</span>'],
-      ['树高', '<span class="num">' + m(t.measures.height_cm) + '</span>'],
+      ['推定樹齡', t.measures.age_years_est ? '<span class="num">約 ' + t.measures.age_years_est + ' 年<span style="font-size:11px;color:var(--muted)">（推定）</span></span>' : '<span class="muted">待記</span>'],
+      ['樹高', '<span class="num">' + m(t.measures.height_cm) + '</span>'],
       ['冠幅', '<span class="num">' + m(t.measures.width_cm) + '</span>'],
-      ['干周（离地 1.2 m）', '<span class="num">' + (t.measures.trunk_girth_cm == null ? '—' : t.measures.trunk_girth_cm + ' cm') + '</span>'],
-      ['根鉢', t.measures.root_ball_cm ? '<span class="num">' + t.measures.root_ball_cm + ' cm</span>' : '<span class="num muted">未起挖' + (t.logistics && t.logistics.root_ball_est_cm ? '（预计 约 ' + t.logistics.root_ball_est_cm + ' cm）' : '') + '</span>'],
-      ['树形', t.form.zh ? esc(t.form.zh) + ' <span lang="ja" style="color:var(--muted);font-size:13px">' + esc(t.form.ja) + '</span>' : '<span class="muted">—</span>'],
+      ['幹周（離地 1.2 m）', '<span class="num">' + (t.measures.trunk_girth_cm == null ? '—' : t.measures.trunk_girth_cm + ' cm') + '</span>'],
+      ['根鉢', t.measures.root_ball_cm ? '<span class="num">' + t.measures.root_ball_cm + ' cm</span>' : '<span class="num muted">未起挖' + (t.logistics && t.logistics.root_ball_est_cm ? '（預計 約 ' + t.logistics.root_ball_est_cm + ' cm）' : '') + '</span>'],
+      ['樹形', t.form.zh ? esc(t.form.zh) + ' <span lang="ja" style="color:var(--muted);font-size:13px">' + esc(t.form.ja) + '</span>' : '<span class="muted">—</span>'],
       ['見頃', '<span style="color:var(--season)">' + S.kanji + '</span>' + (sp.best_season_note ? ' · ' + esc(sp.best_season_note) : '')],
-      ['产地', '关东'],
-      ['价格', '议价 <span lang="ja" style="color:var(--muted);font-size:13px">応談</span>'],
-      ['整理番号', '<span class="num" style="letter-spacing:0.08em">' + esc(t.catalog_no) + '</span>']
+      ['產地', '關東'],
+      ['價格', '議價 <span lang="ja" style="color:var(--muted);font-size:13px">応談</span>'],
+      ['整理番號', '<span class="num" style="letter-spacing:0.08em">' + esc(t.catalog_no) + '</span>']
     ];
-    return '<dl class="plaque">' + rows.map(function (r) { return '<div class="row"><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl><p class="foot">尺寸为园方现场量测近似值，起挖与修剪后可能变化；树龄为推定。</p>';
+    return '<dl class="plaque">' + rows.map(function (r) { return '<div class="row"><dt>' + r[0] + '</dt><dd>' + r[1] + '</dd></div>'; }).join('') + '</dl><p class="foot">尺寸為園方現場量測近似值，起挖與修剪後可能變化；樹齡為推定。</p>';
   }
   function seasonsStrip(t) {
     return '<div class="grid4">' + SEASONS.map(function (s) {
@@ -321,31 +321,31 @@
   var LINKS = { baike: '百度百科', wiki_ja: 'Wikipedia（日本語）', wiki_en: 'Wikipedia（English）' };
   function knowledge(sp, onSpeciesPage) {
     var k = sp && sp.knowledge && sp.knowledge.zh; if (!k) return '';
-    var rows = [['原产', k.origin], ['性格', k.character], ['文化', k.culture], ['生长', k.growth], ['养护', k.care]].filter(function (r) { return r[1]; });
+    var rows = [['原產', k.origin], ['性格', k.character], ['文化', k.culture], ['生長', k.growth], ['養護', k.care]].filter(function (r) { return r[1]; });
     var links = Object.keys(sp.links || {}).filter(function (key) { return sp.links[key]; });
-    return '<section class="panel knowledge reveal" style="margin-top:28px"><div style="display:flex;justify-content:space-between;align-items:baseline"><h2 class="dzh" style="font-size:19px;font-weight:400">树种小识 · ' + esc(shortZh(sp)) + '</h2><span lang="ja" class="muted" style="font-size:12px">樹種について</span></div>' +
+    return '<section class="panel knowledge reveal" style="margin-top:28px"><div style="display:flex;justify-content:space-between;align-items:baseline"><h2 class="dzh" style="font-size:19px;font-weight:400">樹種小識 · ' + esc(shortZh(sp)) + '</h2><span lang="ja" class="muted" style="font-size:12px">樹種について</span></div>' +
       ORN.lace(seasonColor(sp.best_season)) +
       (k.intro ? '<p class="intro">' + esc(k.intro) + '</p>' : '') +
       '<dl>' + rows.map(function (r) { return '<div class="k"><dt>' + r[0] + '</dt><dd>' + esc(r[1]) + '</dd></div>'; }).join('') + '</dl>' +
-      (links.length ? '<div class="links"><span class="lbl">延伸阅读</span>' + links.map(function (key) { return '<a href="' + esc(sp.links[key]) + '" target="_blank" rel="noopener noreferrer">' + LINKS[key] + ' ↗</a>'; }).join('') + '</div>' : '') +
-      '<p class="muted" style="font-size:11px;line-height:1.6;margin-top:4px">一般知识，供参考；不构成对本株的承诺。' + (onSpeciesPage ? '' : '<a href="' + BASE + '?species=' + esc(sp.id) + EDITQ + '" style="margin-left:6px">本馆所有' + esc(shortZh(sp)) + ' →</a>') + '</p></section>';
+      (links.length ? '<div class="links"><span class="lbl">延伸閱讀</span>' + links.map(function (key) { return '<a href="' + esc(sp.links[key]) + '" target="_blank" rel="noopener noreferrer">' + LINKS[key] + ' ↗</a>'; }).join('') + '</div>' : '') +
+      '<p class="muted" style="font-size:11px;line-height:1.6;margin-top:4px">一般知識，供參考；不構成對本株的承諾。' + (onSpeciesPage ? '' : '<a href="' + BASE + '?species=' + esc(sp.id) + EDITQ + '" style="margin-left:6px">本館所有' + esc(shortZh(sp)) + ' →</a>') + '</p></section>';
   }
   function logisticsLine(t) {
     var L = t.logistics || {}, k = TRADE[t.trade.status] || TRADE.unknown;
-    var bits = [k.zh.replace(/（.*$/, ''), L.nemawashi === 'done' ? '断根 已完成' + (L.nemawashi_at ? '（' + L.nemawashi_at + '）' : '') : L.nemawashi === 'in_progress' ? '断根 进行中' : '断根 未开始',
-      L.root_ball_est_cm ? '根球 约 ' + L.root_ball_est_cm + ' cm' : null, L.est_weight_kg ? '估重 约 ' + (L.est_weight_kg / 1000).toFixed(1) + ' t' : null, L.crane_access === false ? '吊车受限' : L.crane_access === true ? '吊车可达' : null, L.earliest_ship ? '最早出货 ' + L.earliest_ship + '（休眠期）' : '出货窗口待定'].filter(Boolean);
-    return '<section class="stack reveal" style="gap:8px;margin-top:24px"><span class="lbl">物流概要 · 輸送</span><p class="num" style="font-size:13px;line-height:1.8">' + bits.map(esc).join(' · ') + '</p><p style="font-size:13px"><a href="' + BASE + 'journey/">每一棵树的旅程 · 木の旅 →</a></p></section>';
+    var bits = [k.zh.replace(/（.*$/, ''), L.nemawashi === 'done' ? '斷根 已完成' + (L.nemawashi_at ? '（' + L.nemawashi_at + '）' : '') : L.nemawashi === 'in_progress' ? '斷根 進行中' : '斷根 未開始',
+      L.root_ball_est_cm ? '根球 約 ' + L.root_ball_est_cm + ' cm' : null, L.est_weight_kg ? '估重 約 ' + (L.est_weight_kg / 1000).toFixed(1) + ' t' : null, L.crane_access === false ? '吊車受限' : L.crane_access === true ? '吊車可達' : null, L.earliest_ship ? '最早出貨 ' + L.earliest_ship + '（休眠期）' : '出貨窗口待定'].filter(Boolean);
+    return '<section class="stack reveal" style="gap:8px;margin-top:24px"><span class="lbl">物流概要 · 輸送</span><p class="num" style="font-size:13px;line-height:1.8">' + bits.map(esc).join(' · ') + '</p><p style="font-size:13px"><a href="' + BASE + 'journey/">每一棵樹的旅程 · 木の旅 →</a></p></section>';
   }
   function videoBlock(t) {
     if (!t.video) return '';
     if (t.video.src) return '<section style="margin-top:14px"><div class="ph" style="aspect-ratio:9/16;max-width:360px;margin:0 auto;background:#000"><video controls playsinline preload="metadata" src="' + esc(t.video.src) + '" style="position:absolute;inset:0;width:100%;height:100%;object-fit:contain"></video></div><p class="muted num" style="font-size:11px;text-align:center;margin-top:6px">環視' + (t.video.duration_s ? ' ' + t.video.duration_s + ' 秒' : '') + (t.video.taken_at ? ' · ' + esc(t.video.taken_at) : '') + '</p></section>';
-    return '<section style="margin-top:14px"><div class="ph" style="aspect-ratio:358/219;display:flex;align-items:center;justify-content:center">' + silhouette(t, 358, 219) + '<button type="button" aria-label="播放视频" style="position:relative;width:56px;height:56px;border-radius:50%;border:1px solid var(--ink);background:rgba(246,242,234,0.9);display:flex;align-items:center;justify-content:center">' + ORN.play + '</button><span class="cap">環視 ' + (t.video.duration_s || '') + ' 秒 · 9:16 · ' + esc(t.video.taken_at || '') + '</span></div></section>';
+    return '<section style="margin-top:14px"><div class="ph" style="aspect-ratio:358/219;display:flex;align-items:center;justify-content:center">' + silhouette(t, 358, 219) + '<button type="button" aria-label="播放影片" style="position:relative;width:56px;height:56px;border-radius:50%;border:1px solid var(--ink);background:rgba(246,242,234,0.9);display:flex;align-items:center;justify-content:center">' + ORN.play + '</button><span class="cap">環視 ' + (t.video.duration_s || '') + ' 秒 · 9:16 · ' + esc(t.video.taken_at || '') + '</span></div></section>';
   }
 
   function renderTree(root, data, lang) {
     var slug = Q.get('slug');
     var t = data.trees.filter(function (x) { return x.id === slug; })[0];
-    if (!t) { root.innerHTML = '<p class="muted" style="padding:40px 0">未找到这株树。<a href="' + BASE + '">回到展厅 →</a></p>'; return; }
+    if (!t) { root.innerHTML = '<p class="muted" style="padding:40px 0">未找到這株樹。<a href="' + BASE + '">回到展廳 →</a></p>'; return; }
     var sp = t.sp || {}, col = seasonColor(t.season), hero = pick(t, 1, t.season), tier = TIER[t.tier] || TIER.collection;
     document.title = (name(t, 'zh') ? name(t, 'zh') + ' · ' : '') + speciesName(sp, 'zh') + ' · ' + t.catalog_no + ' · 名木 Mei';
     document.documentElement.className = 's-' + t.season;
@@ -363,16 +363,16 @@
       left += '<div style="margin-top:30px">' + ORN.brush() + '</div><section class="text stack reveal" style="gap:12px;margin-top:16px">' + (t.text.zh.headline ? '<h2>' + esc(t.text.zh.headline) + '</h2>' : '') + '<p>' + esc(t.text.zh.body) + '</p>' +
         (t.text.ja && t.text.ja.body ? '<details><summary lang="ja" style="font-size:13px;color:var(--accent);cursor:pointer">原文（日本語）を表示</summary><p lang="ja" style="margin-top:8px;font-size:15px;line-height:1.9">' + esc(t.text.ja.body) + '</p></details>' : '') + '</section>';
     }
-    left += '<div style="margin-top:28px">' + ORN.lace(col) + '</div><section class="stack" style="gap:12px;margin-top:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><h2 class="dzh" style="font-size:20px;font-weight:400">四季 <span lang="ja" class="muted" style="font-size:13px">四季の姿</span></h2><span class="muted" style="font-size:11px">每张照片注明拍摄日与节气</span></div>' + seasonsStrip(t) + '</section>';
+    left += '<div style="margin-top:28px">' + ORN.lace(col) + '</div><section class="stack" style="gap:12px;margin-top:16px"><div style="display:flex;justify-content:space-between;align-items:baseline"><h2 class="dzh" style="font-size:20px;font-weight:400">四季 <span lang="ja" class="muted" style="font-size:13px">四季の姿</span></h2><span class="muted" style="font-size:11px">每張照片註明拍攝日與節氣</span></div>' + seasonsStrip(t) + '</section>';
     var g = gallery(t); if (g) left += '<section style="margin-top:22px">' + g + '</section>';
     left += videoBlock(t);
     left += knowledge(sp);
     right += plaque(t, lang) + '<div style="margin-top:14px">' + tradeCard(t, lang) + '</div>' + logisticsLine(t) +
-      '<p class="muted" style="font-size:11px;line-height:1.7;margin-top:18px">活体植物，存活不作保证。图像与尺寸为拍摄、量测当日之记录；出口整备（去土、修剪）会改变树姿。价格议定；出口可否与运输逐案确认。</p>' +
+      '<p class="muted" style="font-size:11px;line-height:1.7;margin-top:18px">活體植物，存活不作保證。圖像與尺寸為拍攝、量測當日之記錄；出口整備（去土、修剪）會改變樹姿。價格議定；出口可否與運輸逐案確認。</p>' +
       '<div style="margin-top:24px">' + ORN.branch(col) + '</div>' +
-      (t.status === 'sold' ? '<p class="muted" style="margin-top:14px;font-size:14px">此树已成交 · <a href="' + BASE + 'find/">委托我们寻找相近的一棵 →</a></p>'
-        : t.status === 'reserved' ? '<p class="muted" style="margin-top:14px;font-size:14px">此树已有预约 · <a href="' + BASE + 'find/?ref=' + esc(t.catalog_no) + '">委托我们寻找相近的一棵 →</a></p>'
-        : '<section class="stack" style="gap:12px;margin-top:14px"><a class="btn block" href="' + BASE + 'inquiry/?tree=' + esc(t.id) + '">询价 · お問い合わせ</a><p style="font-size:13px;text-align:center"><a href="' + BASE + 'find/?ref=' + esc(t.catalog_no) + '">想找与此相近的树？委托我们寻木 →</a></p></section>') +
+      (t.status === 'sold' ? '<p class="muted" style="margin-top:14px;font-size:14px">此樹已成交 · <a href="' + BASE + 'find/">委託我們尋找相近的一棵 →</a></p>'
+        : t.status === 'reserved' ? '<p class="muted" style="margin-top:14px;font-size:14px">此樹已有預約 · <a href="' + BASE + 'find/?ref=' + esc(t.catalog_no) + '">委託我們尋找相近的一棵 →</a></p>'
+        : '<section class="stack" style="gap:12px;margin-top:14px"><a class="btn block" href="' + BASE + 'inquiry/?tree=' + esc(t.id) + '">詢價 · お問い合わせ</a><p style="font-size:13px;text-align:center"><a href="' + BASE + 'find/?ref=' + esc(t.catalog_no) + '">想找與此相近的樹？委託我們尋木 →</a></p></section>') +
       '<section style="padding-top:30px;display:flex;justify-content:space-between;align-items:flex-end"><div class="stack" style="gap:4px"><span class="dzh" style="font-size:15px">' + PROVENANCE.zh + '</span><span lang="ja" class="dja" style="font-size:12px;color:var(--muted)">' + PROVENANCE.ja + '</span><span class="en muted" style="font-size:12px">' + PROVENANCE.en + '</span><span class="num" style="font-size:12px;letter-spacing:0.12em;margin-top:8px">' + esc(t.catalog_no) + '</span></div><div id="qr" style="padding:6px;background:#fff;border-radius:10px;border:1px solid var(--hairline);width:76px;height:76px"></div></section>';
     root.innerHTML = '<div class="tree-grid"><div class="left">' + left + '</div><aside class="right">' + right + '</aside></div>';
     var qr = document.getElementById('qr'); if (qr && window.MeiQR) qr.innerHTML = window.MeiQR(location.href, 64);
@@ -393,11 +393,11 @@
     document.querySelectorAll('[data-season-now]').forEach(function (el) { el.textContent = nextTermLine(new Date()); });
     loadData().then(function (data) {
       var banner = document.getElementById('sample-banner');
-      if (banner && data.trees.some(function (t) { return t.sample; })) banner.textContent = data.hasReal ? '标「示例」者为样本，正陆续替换为实拍与在售之木' : '样本预览 · サンプル · 照片为占位，树木数据为示例';
+      if (banner && data.trees.some(function (t) { return t.sample; })) banner.textContent = data.hasReal ? '標「範例」者為樣本，正陸續替換為實拍與在售之木' : '樣本預覽 · サンプル · 照片為佔位，樹木資料為範例';
       if (home) renderHome(home, data, lang);
       if (tree) renderTree(tree, data, lang);
-      if (EDIT) loadScript(BASE + 'assets/auth.js').then(function () { return loadScript(BASE + 'assets/edit.js'); }).catch(function () { if (banner) banner.textContent = '编辑模式加载失败'; });
-    }).catch(function (e) { (home || tree || document.body).insertAdjacentHTML('beforeend', '<p class="muted">数据加载失败：' + esc(e.message) + '</p>'); });
+      if (EDIT) loadScript(BASE + 'assets/auth.js').then(function () { return loadScript(BASE + 'assets/edit.js'); }).catch(function () { if (banner) banner.textContent = '編輯模式載入失敗'; });
+    }).catch(function (e) { (home || tree || document.body).insertAdjacentHTML('beforeend', '<p class="muted">資料載入失敗：' + esc(e.message) + '</p>'); });
   }
   window.Mei = { solarTerm: solarTerm, seasonOf: seasonOf, seasonOrder: seasonOrder, sortTrees: sortTrees, TRADE: TRADE, SEASON: SEASON, ORN: ORN, BASE: BASE };
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot); else boot();

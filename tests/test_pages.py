@@ -30,7 +30,7 @@ def test_no_google_assets_except_dev_fonts():
 def test_every_page_declares_a_language_and_the_viewport():
     for p in PAGES:
         html = read(p)
-        assert re.search(r'<html lang="(zh-Hans|ja|en)"', html), p
+        assert re.search(r'<html lang="(zh-Hant|ja|en)"', html), f'{p}: Chinese pages are Traditional (ruling 17)'
         assert 'name="viewport"' in html, p
 
 
@@ -46,8 +46,8 @@ def test_dev_font_link_is_marked_as_dev_only_on_the_home_page():
 
 def test_runtime_rules_in_js():
     js = read(os.path.join(ROOT, 'assets', 'mei.js'))
-    assert 'FIXED_TRADE' in js and '不构成法律意见' in js, 'every export plaque ends with the fixed sentence'
-    assert "PROVENANCE" in js and '关东名园出品' in js
+    assert 'FIXED_TRADE' in js and '不構成法律意見' in js, 'every export plaque ends with the fixed sentence'
+    assert "PROVENANCE" in js and '關東名園出品' in js
     assert not re.search(r'garden_id|name_ja|plot_ref|area_text', js), 'no garden identity fields in the runtime'
     assert 'solarTerm' in js and '秋分' in js
 
@@ -73,7 +73,7 @@ def test_gallery_runtime_reads_the_api_first_and_falls_back_to_files():
     js = read(os.path.join(ROOT, 'assets', 'mei.js'))
     assert 'api/mei?action=trees' in js and 'data/trees.json' in js
     assert 'laceEdge' in js and 'lace' in js and 'wave' not in js.replace('waves', ''), 'section breaks are lace now'
-    assert '延伸阅读' in js and 'rel="noopener noreferrer"' in js and 'target="_blank"' in js
+    assert '延伸閱讀' in js and 'rel="noopener noreferrer"' in js and 'target="_blank"' in js
     assert 'edit-slot' in js and 'assets/edit.js' in js
     edit = read(os.path.join(ROOT, 'assets', 'edit.js'))
     assert 'sample_sign' in edit and 'sample_commit' in edit and "'x-upsert': 'true'" in edit
@@ -87,3 +87,18 @@ def test_no_google_assets_except_dev_fonts_and_supabase_cdn_only_in_auth():
     assert 'cdn.jsdelivr.net' not in js, 'the public gallery runtime loads no third-party script'
     auth = read(os.path.join(ROOT, 'assets', 'auth.js'))
     assert 'supabase-js@2' in auth
+
+
+SIMPLIFIED_ONLY = re.compile('[这为树种实际价询预约录发现关东园陆选学长经时让体对将认记录义变产标过兴见节观赏树龄爱]')
+
+
+def test_chinese_ui_is_traditional():
+    """Ruling 17 (2026-10-07): 全部使用繁體字. Simplified-only characters may not appear in any Chinese UI string."""
+    for rel in ('index.html', 't/index.html', 'journey/index.html', 'desk/index.html'):
+        html = read(os.path.join(ROOT, rel))
+        body = re.sub(r'<!--.*?-->', '', html, flags=re.S)
+        assert not SIMPLIFIED_ONLY.search(body), f"{rel}: {SIMPLIFIED_ONLY.search(body).group(0)}"
+    for rel in ('assets/mei.js', 'assets/desk.js', 'assets/edit.js'):
+        js = read(os.path.join(ROOT, rel))
+        strings = ''.join(re.findall(r"'((?:[^'\\\n]|\\.)*)'", js))
+        assert not SIMPLIFIED_ONLY.search(strings), f"{rel}: {SIMPLIFIED_ONLY.search(strings).group(0)}"

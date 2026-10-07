@@ -79,6 +79,11 @@ Later: `MEI_GEMINI_API_KEY`, `RESEND_API_KEY` (AI assists, mail). Before any Chi
 
 ## Rules that bite
 
+- **Chinese is Traditional (繁體) everywhere** since ruling 17 (2026-10-07): pages carry `lang="zh-Hant"`; new UI strings are
+  written in 繁體 directly; `scripts/to_hant.py <files…>` converts anything that arrives Simplified (OpenCC + the vocabulary
+  table; Japanese text is left alone). `species.zh` is 繁體, `species.zhs` keeps the Simplified name for searches. The
+  typefaces stay as they are (owner's call) — note the brush face lacks most Traditional-only glyphs.
+
 - Species names are per-language columns joined by the Latin binomial; never map kanji to Chinese.
 - The paper is always paper; season colours in five places; gold = signature; red = the seal.
 - The plaque is the only square thing. 「推定」 sits next to every age.

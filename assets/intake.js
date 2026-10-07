@@ -40,7 +40,7 @@
     var approved = state.species.filter(function (s) { return s.status === 'approved'; });
     var pending = state.species.filter(function (s) { return s.status !== 'approved'; });
     sel.innerHTML = '<option value="">— 樹種を選ぶ —</option>' +
-      approved.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.ja_kanji) + (s.ja_reading ? '（' + esc(s.ja_reading.split(' ')[0]) + '）' : '') + (s.zh_hans ? ' — ' + esc(s.zh_hans) : '') + '</option>'; }).join('') +
+      approved.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.ja_kanji) + (s.ja_reading ? '（' + esc(s.ja_reading.split(' ')[0]) + '）' : '') + (s.zh_hant || s.zh_hans ? ' — ' + esc(s.zh_hant || s.zh_hans) : '') + '</option>'; }).join('') +
       (pending.length ? '<optgroup label="確認待ち（スタッフが中文名・学名を付けます）">' + pending.map(function (s) { return '<option value="' + esc(s.id) + '">' + esc(s.ja_kanji) + '</option>'; }).join('') + '</optgroup>' : '') +
       '<option value="__other__">その他…（新しい樹種を提案）</option>';
     if (state.tree && state.tree.species_id) sel.value = state.tree.species_id;

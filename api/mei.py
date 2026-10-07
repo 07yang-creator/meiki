@@ -47,9 +47,9 @@ INT_FIELDS = ('height_cm', 'width_cm', 'trunk_girth_cm', 'root_ball_cm', 'age_ye
 TEXT_FIELDS = ('cultivar_ja', 'given_name_ja', 'plot_ref', 'supplier_notes_ja', 'form_id', 'nemawashi_method', 'planned_dig_window', 'site_access')
 DESK_TEXT_FIELDS = ('given_name_zh', 'given_name_en', 'cultivar_zh', 'earliest_ship_window')
 SUPPLIER_EDITABLE_STATUSES = ('draft', 'review')
-FORMS = {'chokkan': ('直干', '直幹', 'Formal upright'), 'kyokkan': ('曲干（模样木）', '曲幹（模様木）', 'Informal upright'), 'shakan': ('斜干', '斜幹', 'Slanting'),
-         'sokan': ('双干', '双幹', 'Twin trunk'), 'kabudachi': ('丛生多干', '株立ち', 'Multi-stem clump'), 'monkaburi': ('门冠型', '門かぶり', 'Gate canopy'),
-         'shidare': ('垂枝', '枝垂れ', 'Weeping'), 'tamachirashi': ('玉散', '玉散らし', 'Cloud pruned'), 'danzukuri': ('层云', '段作り', 'Tiered'), 'shizen': ('自然树形', '自然樹形', 'Natural form')}
+FORMS = {'chokkan': ('直幹', '直幹', 'Formal upright'), 'kyokkan': ('曲幹（模樣木）', '曲幹（模様木）', 'Informal upright'), 'shakan': ('斜幹', '斜幹', 'Slanting'),
+         'sokan': ('雙幹', '雙幹', 'Twin trunk'), 'kabudachi': ('叢生多幹', '株立ち', 'Multi-stem clump'), 'monkaburi': ('門冠型', '門かぶり', 'Gate canopy'),
+         'shidare': ('垂枝', '枝垂れ', 'Weeping'), 'tamachirashi': ('玉散', '玉散らし', 'Cloud pruned'), 'danzukuri': ('層雲', '段作り', 'Tiered'), 'shizen': ('自然樹形', '自然樹形', 'Natural form')}
 
 
 # ---------- seed ----------
@@ -191,11 +191,11 @@ def _db_species_extra(seed_ids):
         return []
     out = []
     for s in rows:
-        if s['id'] in seed_ids or not s.get('zh_hans'):
+        if s['id'] in seed_ids or not (s.get('zh_hant') or s.get('zh_hans')):
             continue
         tr = trade.get(s['id']) or {}
         k = {key: s.get(f'know_{key}_zh') for key in ('intro', 'origin', 'character', 'culture', 'growth', 'care')}
-        out.append({'id': s['id'], 'latin': s['latin'], 'latin_note': None, 'ja': s.get('ja_kanji') or '', 'ja_reading': s.get('ja_reading') or '', 'zh': s['zh_hans'], 'zht': s.get('zh_hant') or s['zh_hans'],
+        out.append({'id': s['id'], 'latin': s['latin'], 'latin_note': None, 'ja': s.get('ja_kanji') or '', 'ja_reading': s.get('ja_reading') or '', 'zh': s.get('zh_hant') or s['zh_hans'], 'zhs': s.get('zh_hans'),
                     'en': s.get('en') or '', 'category': s.get('category') or 'other', 'false_friend': bool(s.get('false_friend')), 'kanji_note': None,
                     'best_season': s.get('best_season') or 'summer', 'rank': s.get('rank') or 99,
                     'trade': {'CN': {'status': tr.get('status') or 'unknown', 'verified_at': str(tr.get('verified_at') or '')[:7] or None}},
@@ -486,9 +486,9 @@ def tree_get(user, member, qs):
 
 
 def species_all(user, member, qs):
-    rows = _db.select('species', select='id,latin,ja_kanji,ja_reading,ja_variants,zh_hans,en,category,best_season,rank,status', order='rank.asc')
+    rows = _db.select('species', select='id,latin,ja_kanji,ja_reading,ja_variants,zh_hans,zh_hant,en,category,best_season,rank,status', order='rank.asc')
     if not rows:                                   # registry not seeded yet → the seed file keeps the pick-list alive
-        rows = [{'id': s['id'], 'latin': s['latin'], 'ja_kanji': s['ja'], 'ja_reading': s['ja_reading'], 'zh_hans': s['zh'], 'en': s['en'],
+        rows = [{'id': s['id'], 'latin': s['latin'], 'ja_kanji': s['ja'], 'ja_reading': s['ja_reading'], 'zh_hans': s.get('zhs'), 'zh_hant': s['zh'], 'en': s['en'],
                  'category': s['category'], 'best_season': s['best_season'], 'rank': s['rank'], 'status': 'approved'} for s in _seed_species()]
     return 200, {'species': rows}
 
@@ -519,7 +519,7 @@ def queue(user, member, qs):
         params['status'] = f'eq.{want}'
     rows = _db.select('trees', **params)
     gardens = {g['id']: g.get('name_ja') for g in _db.select('gardens', select='id,name_ja')}
-    species = {s['id']: s for s in _db.select('species', select='id,ja_kanji,zh_hans,status')}
+    species = {s['id']: s for s in _db.select('species', select='id,ja_kanji,zh_hans,zh_hant,status')}
     counts = {}
     for m in _db.select('tree_media', select='tree_id,kind'):
         c = counts.setdefault(m['tree_id'], {'photo': 0, 'video': 0})
@@ -531,7 +531,7 @@ def queue(user, member, qs):
         sp = species.get(t['species_id']) or {}
         t['garden'] = gardens.get(t.get('garden_id'))
         t['species_ja'] = sp.get('ja_kanji') or t['species_id']
-        t['species_zh'] = sp.get('zh_hans')
+        t['species_zh'] = sp.get('zh_hant') or sp.get('zh_hans')
         t['species_status'] = sp.get('status')
         t['photos'] = counts.get(t['id'], {}).get('photo', 0)
         t['videos'] = counts.get(t['id'], {}).get('video', 0)
@@ -540,21 +540,21 @@ def queue(user, member, qs):
 
 def _gate(tree):
     """The publish checklist (plan §5.1). → (items, ready)."""
-    sp = (_db.select('species', id=f"eq.{tree['species_id']}", select='id,status,zh_hans,latin') or [None])[0] or {}
+    sp = (_db.select('species', id=f"eq.{tree['species_id']}", select='id,status,zh_hans,zh_hant,latin') or [None])[0] or {}
     seed = {s['id']: s for s in _seed_species()}.get(tree['species_id'])
-    sp_ok = bool(sp.get('status') == 'approved' and sp.get('zh_hans') and not str(sp.get('latin') or '').startswith('Pending'))
+    sp_ok = bool(sp.get('status') == 'approved' and (sp.get('zh_hant') or sp.get('zh_hans')) and not str(sp.get('latin') or '').startswith('Pending'))
     texts = _db.select('tree_texts', tree_id=f"eq.{tree['id']}", lang='eq.zh', source='eq.human', kind='eq.label', select='id,body', order='created_at.desc', limit='1')
     media = _db.select('tree_media', tree_id=f"eq.{tree['id']}", kind='eq.photo', select='id,shot_no,mime')
     trade = _db.select('species_trade', species_id=f"eq.{tree['species_id']}", destination='eq.CN', select='status')
     trade_status = (trade[0]['status'] if trade else None) or (seed and seed['trade']['CN']['status']) or 'unknown'
     items = [
-        {'key': 'species', 'required': True, 'ok': sp_ok, 'zh': '树种已审定（中文名 · 学名）'},
-        {'key': 'measures', 'required': True, 'ok': bool(tree.get('height_cm') and tree.get('width_cm')), 'zh': '树高 · 冠幅已填'},
+        {'key': 'species', 'required': True, 'ok': sp_ok, 'zh': '樹種已審定（中文名 · 學名）'},
+        {'key': 'measures', 'required': True, 'ok': bool(tree.get('height_cm') and tree.get('width_cm')), 'zh': '樹高 · 冠幅已填'},
         {'key': 'photo1', 'required': True, 'ok': any(m.get('shot_no') == 1 for m in media), 'zh': '①正面 照片'},
         {'key': 'text_zh', 'required': True, 'ok': bool(texts and (texts[0].get('body') or '').strip()), 'zh': '中文文案（人工定稿）'},
-        {'key': 'trade', 'required': False, 'ok': trade_status != 'unknown', 'zh': '出口状态已核（' + trade_status + '）'},
-        {'key': 'tier', 'required': False, 'ok': tree.get('tier') in TIERS, 'zh': '等级已定（' + str(tree.get('tier') or '—') + '）'},
-        {'key': 'public_mimes', 'required': False, 'ok': all((m.get('mime') or 'image/jpeg') in PUBLIC_MIMES for m in media), 'zh': '照片格式可公开（JPEG/PNG/WebP）'},
+        {'key': 'trade', 'required': False, 'ok': trade_status != 'unknown', 'zh': '出口狀態已核（' + trade_status + '）'},
+        {'key': 'tier', 'required': False, 'ok': tree.get('tier') in TIERS, 'zh': '等級已定（' + str(tree.get('tier') or '—') + '）'},
+        {'key': 'public_mimes', 'required': False, 'ok': all((m.get('mime') or 'image/jpeg') in PUBLIC_MIMES for m in media), 'zh': '照片格式可公開（JPEG/PNG/WebP）'},
     ]
     return items, all(i['ok'] for i in items if i['required'])
 
@@ -705,14 +705,14 @@ def species_approve(user, member, body):
     row = (_db.select('species', id=f'eq.{sid}', limit='1') or [None])[0] if re.match(r'^[a-z0-9-]{1,80}$', sid) else None
     if not row:
         return 404, {'error': 'species not found'}
-    zh = str(body.get('zh_hans') or '').strip()[:60]
+    zh = str(body.get('zh_hant') or body.get('zh_hans') or '').strip()[:60]     # the desk types the 繁體 name (ruling 17)
     latin = ' '.join(str(body.get('latin') or '').split())[:80]
     if not zh or not latin:
-        return 400, {'error': 'zh_hans and latin required'}
+        return 400, {'error': 'zh_hant and latin required'}
     if not LATIN_RX.match(latin):
         return 400, {'error': 'latin must look like a binomial (Genus species / Genus spp.)'}
-    patch = {'zh_hans': zh, 'latin': latin, 'status': 'approved', 'approved_by': user['id'], 'approved_at': _now()}
-    for k in ('zh_hant', 'en', 'kanji_note'):
+    patch = {'zh_hant': zh, 'latin': latin, 'status': 'approved', 'approved_by': user['id'], 'approved_at': _now()}
+    for k in ('zh_hans', 'en', 'kanji_note'):
         if body.get(k):
             patch[k] = str(body[k]).strip()[:200]
     if body.get('category'):
@@ -733,7 +733,7 @@ def species_approve(user, member, body):
         return 409, {'error': 'that Latin name is already registered'}
     if status not in (200, 201):
         return 502, {'error': 'db update failed'}
-    _event('species', sid, user['id'], 'approve', {'zh_hans': zh, 'latin': latin})
+    _event('species', sid, user['id'], 'approve', {'zh_hant': zh, 'latin': latin})
     return 200, {'species': updated}
 
 

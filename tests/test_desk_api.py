@@ -158,13 +158,17 @@ def test_species_approval_is_admin_only_and_needs_zh_and_a_binomial(fake):
     sid = prop['species']['id']
     status, pend = call('GET', 'species_pending', 'tok-staff')
     assert status == 200 and [s['id'] for s in pend['species']] == [sid]
-    assert call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hans': '厚皮香'})[0] == 400
-    assert call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hans': '厚皮香', 'latin': 'mokkoku tree'})[0] == 400
-    assert call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hans': '厚皮香', 'latin': 'Acer palmatum'})[0] == 409, 'Latin is the unique join key'
-    status, out = call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hans': '厚皮香', 'latin': 'Ternstroemia gymnanthera', 'en': 'Japanese ternstroemia', 'category': 'evergreen', 'best_season': 'summer', 'rank': 20})
+    assert call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hant': '厚皮香'})[0] == 400
+    assert call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hant': '厚皮香', 'latin': 'mokkoku tree'})[0] == 400
+    assert call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hant': '厚皮香', 'latin': 'Acer palmatum'})[0] == 409, 'Latin is the unique join key'
+    status, out = call('POST', 'species_approve', 'tok-admin', {'id': sid, 'zh_hant': '厚皮香', 'latin': 'Ternstroemia gymnanthera', 'en': 'Japanese ternstroemia', 'category': 'evergreen', 'best_season': 'summer', 'rank': 20})
     assert status == 200 and out['species']['status'] == 'approved' and out['species']['rank'] == 20
+    assert out['species']['zh_hant'] == '厚皮香' and not out['species'].get('zh_hans'), 'the desk types the 繁體 name (ruling 17)'
+    status, pub = call('GET', 'species')
+    extra = [x for x in pub['species'] if x['id'] == sid][0]
+    assert extra['zh'] == '厚皮香' and extra['trade']['CN']['status'] == 'unknown', 'an approved extra species reaches the public read with its 繁體 name'
+    assert call('POST', 'species_approve', 'tok-admin', {'id': 'nope', 'zh_hant': 'x', 'latin': 'Abies firma'})[0] == 404
     assert call('GET', 'species_pending', 'tok-staff')[1]['species'] == []
-    assert call('POST', 'species_approve', 'tok-admin', {'id': 'nope', 'zh_hans': 'x', 'latin': 'Abies firma'})[0] == 404
 
 
 def test_sample_photo_replacement_signs_an_upsert_and_feeds_the_manifest_into_public_trees(fake):

@@ -27,7 +27,7 @@ def species_sql():
     for s in SPECIES:
         k = (s.get('knowledge') or {}).get('zh') or {}
         L = s.get('links') or {}
-        rows.append('  (' + ', '.join([q(s['id']), q(s['latin']), q(s['ja']), q(s['ja_reading']), q(s['zh']), q(s.get('zht')), q(s['en']), q(s['category']), q(bool(s.get('false_friend'))),
+        rows.append('  (' + ', '.join([q(s['id']), q(s['latin']), q(s['ja']), q(s['ja_reading']), q(s.get('zhs') or s['zh']), q(s['zh']), q(s['en']), q(s['category']), q(bool(s.get('false_friend'))),
                                        q(s.get('kanji_note')), q('approved'), q(s['best_season']), q(s['rank']),
                                        q(k.get('intro')), q(k.get('origin')), q(k.get('character')), q(k.get('culture')), q(k.get('growth')), q(k.get('care')),
                                        q(L.get('baike')), q(L.get('wiki_ja')), q(L.get('wiki_en')), 'now()']) + ')')
@@ -43,7 +43,16 @@ def trade_sql():
     return 'insert into mei.species_trade (species_id, destination, status, fact_zh, source_ref, verified_at) values\n' + ',\n'.join(rows) + '\non conflict (species_id, destination) do nothing;'
 
 
+def hant_update_sql():
+    """A follow-up migration body: set zh_hant (the display name since ruling 17) for the seeded species."""
+    return '\n'.join(f"update mei.species set zh_hant = {q(s['zh'])}, zh_hans = {q(s.get('zhs') or s['zh'])} where id = {q(s['id'])};" for s in SPECIES)
+
+
 if __name__ == '__main__':
-    print(species_sql())
-    print()
-    print(trade_sql())
+    import sys
+    if '--hant-update' in sys.argv:
+        print(hant_update_sql())
+    else:
+        print(species_sql())
+        print()
+        print(trade_sql())

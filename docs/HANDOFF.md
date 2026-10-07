@@ -16,7 +16,9 @@ him — plus one line whenever you need a click or an e-mail from him.
   the gallery reads published trees from the database ahead of the samples · sample photos replaceable via `/?edit=1`).
   Checks: `pytest -q` → 45 pass · `for f in assets/*.js; do node --check "$f"; done`.
 - Done: the `mei` schema migration (SQL editor, ledger row, Exposed schemas) · the GitHub → Vercel link works again ·
-  `SUPABASE_URL` / `SUPABASE_ANON_KEY` / `SUPABASE_SERVICE_ROLE_KEY` are on the Vercel project for Production and Preview.
+  `SUPABASE_URL` / `SUPABASE_ANON_KEY` / `SUPABASE_SERVICE_ROLE_KEY` are on the Vercel project for Production and Preview ·
+  the API answers again (every `/api/mei` call had been a 500 since the first deploy: Vercel loads the handler by file
+  path with `api/` off `sys.path`, so `import _db` failed; `tests/test_runtime_import.py` loads it the runtime's way).
   **Not done:** the supplier's login · the `mei.members` rows (§3).
 
 ## 1. Vercel — healed; the one rule

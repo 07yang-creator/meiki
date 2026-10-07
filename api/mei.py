@@ -14,16 +14,21 @@ bucket server-side inside Storage.
 import json
 import os
 import re
+import sys
 import time
 import uuid
 from datetime import datetime, timezone
 from http.server import BaseHTTPRequestHandler
 from urllib.parse import parse_qs, urlparse
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)      # Vercel loads this file by path with api/ NOT on sys.path: without this line every call
+                                  # died at import (ModuleNotFoundError: _db, 2026-10-07). The imports stay static so the
+                                  # bundler ships the siblings (vercel.json includeFiles covers them too).
 import _db
 import _supabase_auth
 
-HERE = os.path.dirname(os.path.abspath(__file__))
 DATA = os.path.join(HERE, '..', 'data')
 VERIFY = _supabase_auth.verify_token          # tests replace this
 
